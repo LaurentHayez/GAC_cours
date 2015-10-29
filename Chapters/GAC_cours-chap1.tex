@@ -1,0 +1,114 @@
+%---------------------------------------------------------%
+%______//------             GAC             ------\\______%
+%______||------         Chapitre 1          ------||______%
+%______\\------       Groupes Libres        ------//______%
+%---------------------------------------------------------%
+
+\chapter{Groupes libres}
+
+  Soit $A$ un alphabet, fini ou infini.
+  \begin{itemize}
+  \item On considère l'ensemble des mots de longueur finie sur $A \cup A^{-1}$ (on introduit pour chaque
+    nouvelle lettre $a \in A$ une nouvelle lettre $a^{-1}$).
+  \item Un mot est \emph{réduit} s'il ne contient aucune expression de la forme $aa^{-1}$ ou $a^{-1}a$, $a \in
+    A$.
+  \item Le \emph{mot vide} est réduit et se note $1$ (ou $\epsilon$ ou $e$,....).
+  \end{itemize}
+  
+  \begin{defi} \label{defi-1-grp-libre}
+    Le \emph{groupe libre sur $A$}, noté $\Fa$ est l'ensemble des mots réduits sur $A \cup A^{-1}$. Ceci
+    définit $\Fa$ comme ensemble. Pour avoir un groupe il faut définir le produit: c'est la
+    concaténation/réduction. On écrit deux mots réduits bouts à bouts, puis on réduit en supprimant les
+    apparitions de $aa^{-1}$ ou $a^{-1}a$. Avec ce produit, $\Fa$ est un groupe.
+
+    Si $A = \{a_1, \ldots, a_n\}$, on note $\F_n = \Fa$ et on parle du \emph{groupe libre de rang $n$}.
+  \end{defi}
+
+  \begin{exercice}
+    Montrer que $\F_1 = \Z$. En fait, on a $A = \{a\}$, donc les mots sont $aaa\cdots a^{-1}$, c'est-à-dire
+    $a^n$ ou $a^{-n}$.
+  \end{exercice}
+
+  \begin{rem}
+    $\F_1 = \Z$ et $\F_n$ ($n > 1$) ont des propriétés très différentes.
+  \end{rem}
+
+  \begin{defi} \label{defi-2-grp-libre}
+    Soit $X$ un alphabet fini. Le \emph{monoïde libre} sur $X$, noté $M(X)$, est l'ensemble des mots sur $X$
+    avec le produit donné par la concaténation. Soit $X = A \cup A^{-1}$. Nous pouvons poser sur $M(X)$ la
+    relation d'équivalence suivante: $w_1 \sim w_2 \iff $ après réduction, $w_1 = w_2$. Le quotient
+    $M(X)/\sim$ est le \emph{groupe libre} $\Fa$, où l'inverse de la classe d'équivalence de $x_1^{\epsilon_1}
+    \cdots x_n^{\epsilon_n}$ est la classe d'équivalence de $x_n^{-\epsilon_n} \cdots x_1^{-\epsilon_1}$ avec
+    $\epsilon_i \in \Z$ pour tout $i$. L'opération est la concaténation (la réduction est implicite).
+  \end{defi}
+
+  On fait souvent l'abus de language suivant: on va identifier un mot réduit avec sa classe d'équivalence.
+
+  \begin{prop}
+    \begin{enumerate}
+    \item $\Fa$ est un groupe (von Dyck, 1882).
+    \item La définition \ref{defi-1-grp-libre} est équivalente à la définition \ref{defi-2-grp-libre}.
+    \end{enumerate}
+  \end{prop}
+
+  \begin{preuve}
+    \begin{enumerate}
+    \item
+      \begin{itemize}
+      \item Le neutre est le mot vide, noté $\epsilon$ ou $1_{\Fa}$.
+      \item L'inverse de $a_1^{\epsilon_1} \cdots a_n^{\epsilon_n}$ est $a_n^{-\epsilon_n} \cdots
+        a_1^{-\epsilon_1}$.
+      \item L'opération de concaténation et réduction est associative (exercice)
+      \end{itemize}
+
+    \item Exercice. \qedhere
+    \end{enumerate}
+  \end{preuve}
+
+  \paragraph{Question:} pourquoi dit-on  que $\Fa$ est libre sur $A$?
+  \paragraph{Réponse:} car tout mot réduit sur $A$ représentant l'élément neutre est le mot vide
+  (exercice). Alors il n'y a pas de relation entre les lettres dans $A$, et $\Fa$ à la présentation $\langle
+  a_1, a_2, \ldots, a_n | - \rangle$.
+
+  \section{Propriété universelle du groupe libre (PU)}
+  \label{sec:propriete-universelle}
+  
+    Soit $G$ un groupe et $f:A \to G$ une application. Alors il existe un unique homomorphisme $\phi$ tel que
+    le diagramme suivant commute.
+    \begin{center}
+      \begin{tikzpicture}
+        \node (A) at (0,0) {$A$};
+        \node (FA) at (3, 0) {$\Fa$};
+        \node (G) at (1.5, -1.5) {$G$};
+        \draw[right hook-latex] (A) to node[midway, above]{$i$} (FA);
+        \draw[->, >=latex] (A) to node[midway, below left]{$f$} (G);
+        \draw[->, >=latex] (FA) to node[midway, below right]{$!\phi$} (G);
+      \end{tikzpicture}
+    \end{center}
+    Ceci signifie que toute application $f:A \to G$ s'étend en un unique homomorphisme $\phi: \Fa \to G$ où
+    pour $w = a_{i_1}^{\epsilon_1} \cdots a_{i_n}^{\epsilon_n}$ on pose $\phi(w) = f(a_{i_1})^{\epsilon_1}
+    \cdots f(a_{i_n})^{\epsilon_n}$ avec $\epsilon_i \in \Z$. En particulier, si $A$ est une partie
+    génératrice de $G$ (par exemple $A = G$), on voit que $\Fa$ se surjecte sur $G$ et ceci nous donne le
+    théorème suivant, qui est très important.
+
+    \begin{theo} \label{theo-tt-grp-quotient-grp-libre}
+      Tout groupe est quotient d'un groupe libre.
+    \end{theo}
+
+    \begin{preuve}
+      Si $A$ est une partie génératrice d'un groupe $G$, par le premier théorème d'isomorphisme, il existe un
+      isomorphisme tel que $\phi: \Fa \to G$ implique que $\Fa/\ker \phi \cong \im \phi = G$.
+    \end{preuve}
+
+
+
+
+  
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../GAC_cours.tex" 
+%%% End:

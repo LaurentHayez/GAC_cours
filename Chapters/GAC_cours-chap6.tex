@@ -1,0 +1,147 @@
+%---------------------------------------------------------%
+%______//------             GAC             ------\\______%
+%______||------         Chapitre 6          ------||______%
+%______\\------  Transformations de Tietze  ------//______%
+%---------------------------------------------------------%
+
+\chapter{Transformations de Tietze}
+  
+  \begin{defi}
+  Soit $\langle X_1 , \ldots, X_n | \underbrace{r_1, \ldots, r_m}_{R}\rangle$ une présentation finie d'un
+  groupe $G$. Les transformations suivantes, appelées \emph{transformation de Tietze} \index{Transformation de
+    Tietze}, changent la présentation sans changer le groupe.
+  \end{defi}
+
+
+
+   %Algorithme 
+   \begin{algorithm}
+     \caption{Première transformation de Tietze}
+     \label{alg:trans-tietze-1}
+     \begin{algorithmic}
+       \State $T_1$ ou $R^+$: Ajouter à la présentation de $G$ un relateur $r_{m+1}$ qui appartient à la
+       clotûre normale de $R$ (notée $\overline{R}$, $\lhd R \rhd$ ou $gp_G(R)$).
+       \State Soit $r_{m+1} \in \overline{R} \setminus R$: $\langle X | R \rangle \xrightarrow{R^+, T_1}
+       \langle X | R \cup \{r_{m+1}\} \rangle$.
+     \end{algorithmic}
+   \end{algorithm}
+
+
+   \begin{ex}
+     Considérons $\Z^2 = \langle a, b | aba^{-1}b^{-1} \rangle \xrightarrow{R^+} \langle a, b | [a,b], [a,b]^2
+     \rangle$.
+   \end{ex}
+
+
+   \begin{algorithm}
+     \caption{Deuxième transformation de Tietze}
+     \label{alg:trans-tietze-2}
+     \begin{algorithmic}
+       \State $R^-$: Opération inverse de $R^+$.
+       \State Soit $r \in R \setminus \overline{R \setminus \{r\}}$. Alors $\langle X | R \rangle
+       \xrightarrow{R^-} \langle X | R \setminus \{r\} \rangle$.
+     \end{algorithmic}
+   \end{algorithm}
+
+
+   \begin{algorithm}
+     \caption{Troisième transformation de Tietze}
+     \label{alg:trans-tietze-3}
+     \begin{algorithmic}
+       \State $X^+$: Ajouter à la présentation de $G$ un générateur $x_{n+1}$ ainsi qu'une relation $x_{n+1} = w(x_1,
+       \ldots, x_n)$ (un mot sur $x_1, \ldots, x_n$).
+       \State $\langle X | R \rangle \xrightarrow{X^+} \langle X, x_{n+1} | R \cup \{ x_{n+1}w^{-1}(x_1, \ldots, x_n)\} \rangle$
+     \end{algorithmic}
+   \end{algorithm}
+
+
+   \begin{algorithm}
+     \caption{Quatrième transformation de Tietze}
+     \label{alg:trans-tietze-4}
+     \begin{algorithmic}
+       \State $X^-$: Opération inverse de $X^+$.
+       \State Soit $y \in X$, $w \in \langle X \setminus \{y\} \rangle$ et $y^{-1}w$ est le seul mot dans $R$
+       qui contient $y$. Alors
+       \State $\langle X | R \rangle \xrightarrow{X^-} \langle X \setminus \{y\} | R \setminus \{y^{-1}w\} \rangle$.
+     \end{algorithmic}
+   \end{algorithm}
+
+   \begin{ex}
+     Soit $G = \langle x,y | xyx = yxy \rangle$. C'est le groupe fondamental du noeud de trèfle. On va
+     utiliser les transformations de Tietze. On a
+     \begin{align*}
+       \langle x,y | xyx = yxy \rangle &\xrightarrow{X^+} \langle x,y,a,b | xyx = yxy, a=xy, b=xyx \rangle\\
+       &\xrightarrow{R^+} \langle x,y,a,b | xyx=yxy, a=xy, b=xyx, x=a^{-1}b, y = b^{-1} b^{-1}a^2, a^3 = b^2
+         \rangle & a^3 = xyxyxy\\
+       &\xrightarrow{R^-} \langle x,y,a,b | a^3 = b^2, x = a^{-1}b, y = b^{-1}a^2 \rangle\\
+       &\xrightarrow{X^-} \langle a,b | a^3 = b^2 \rangle.
+     \end{align*}
+     Cette dernière présentation correspond au produit libre amalgamé.
+   \end{ex}
+
+
+   \begin{prop}[de \textsc{Tietze}] \label{prop:de-Tietze} \index{Proposition!de \textsc{Tietze}}
+     Les transformations de Tietze ne changent pas le groupe.
+   \end{prop}
+
+   \begin{preuve}[pour $X^+$]
+     Supposons que $G = \langle X | R \rangle$, $y$ est un symbole qui n'est pas dans $X$, et $w(X)$ un mot
+     réduit de $\F(X)$. On veut montrer que $\langle X, y | R \cup \{y^{-1}w(X)\} \rangle \cong \langle X, R
+     \rangle = G$. 
+
+     Soit $\phi : \F(X) \to G$ l'homomorphisme donné par la propriété universelle des groupes libres. Le
+     groupe libre $\F(X, y)$ sur $X \cup \{y\}$ est engendré librement par $X \cup
+     \{y^{-1}w(X)\}$. C'est-à-dire que $\F(X \cup \{y\}) = \F(X \cup \{y^{-1}w(X)\})$. C'est vrai car à
+     partir de $y^{-1}w(X)$, on peut obtenir $y$ (cette inclusion est sensée être facile), et à partir de
+     $y$ on peut obtenir $y^{-1}w(X)$. Ainsi on a
+       \[X \cup \{y^{-1}w(x)\} \hookrightarrow \F(x,y) = \F(X \cup \{y^{-1}w(X)\}.\]
+     Il y a un unique homomorphisme $\phi^1: \F(x,y) \to G$ tel que $\phi^1(x) = \phi(x)$ et
+     $\phi^1(y^{-1}w(X)) = 1$ pour $x \in X$.
+
+     L'homomorphisme $\phi^1: \F(X,y) \to G$ se factorise comme $F(X,y) \xrightarrow{\chi} \F(X)
+     \xrightarrow{\phi} G$ où $\chi(x) = x$ pour tout $x \in X$ et $\chi(y) = w(x)$. Alors $\phi^1$ est
+     surjective et
+       \[\ker \phi^1 = \chi^{-1}(\phi^{-1}(1)) = \chi^{-1} \left( gp_{\F(X)}R \right) = gp_{\F(X,y)}(R \cup
+       \{y^{-1}w(X)\}).\]
+     Ainsi par le premier théorème d'isomorphisme, on a que 
+       \[G \cong \F(x,y)/\ker \phi^1 = \langle X,y | R \cup \{y^{-1}w(X)\} \rangle.\]
+   \end{preuve}
+
+
+
+   \begin{theo}[de \textsc{Tietze}] \label{thm:de-Tietze} \index{Théorème!de \textsc{Tietze}}
+     Soient ${\cal P}_1 = \langle X | R \rangle$ et $ {\cal P}_2 = \langle Y | S \rangle$ des présentations
+     finies pour un groupe $G$. Alors il existe une suite finie de transformations de Tietze qui transforment
+     ${\cal P}_1$ en ${\cal P}_2$.
+   \end{theo}
+
+   \begin{preuve}
+     cf. feuille annexe. $G$ est donné par ${\cal P}_1$ et ${\cal P}_2$. Alors chaque $x \in X$ peut être
+     écrit comme un mot sur $Y$, et on note $x(Y)$. Alors $X(Y)$ représente tous les mots sur $Y$ qui
+     décrivent les éléments de $X$. De la même manière, on définit $y(X)$ et $Y(X)$. 
+
+     On commence avec ${\cal P}_1$ et on utilise les transformations suivantes (voir feuille annexe).
+
+     Intuitivement, on ajoute tous les générateurs $Y$ et on enlève tous les générateurs $X$. On utilise les
+     transformations $R^+$ $|X|+|R|+|Y|+|S|$ fois et $R^- 2(|R|+|Y|)$ fois. Donc il y a un nombre fini de transformations de ${\cal
+       P}_1$ à ${\cal P}_2$.
+   \end{preuve}
+
+   \begin{cor}
+     On peut énumérer toutes les présentations finies d'un groupe $G$ à partir d'une présentation quelconque
+     pour $G$.
+   \end{cor}
+
+   \begin{prop}
+     Si le groupe $G$ a une présentation finie $\langle X_1 |R \rangle$ et une présentation infinie $\langle
+     X_2 | S \rangle$ où $S$ est infini, alors il existe un entier $n$ tel que $\langle X_2 | s_1, \ldots, s_n
+     \rangle$ est une présentation finie pour $G$.
+   \end{prop}
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../GAC_cours.tex" 
+%%% End:

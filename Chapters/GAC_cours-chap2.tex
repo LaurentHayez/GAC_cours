@@ -1,0 +1,62 @@
+%---------------------------------------------------------%
+%______//------             GAC             ------\\______%
+%______||------         Chapitre 2          ------||______%
+%______\\------  Présentations de groupes   ------//______%
+%---------------------------------------------------------%
+
+\chapter{Présentations de groupes}
+
+  Soit $R \subset \Fa$. La \emph{fermeture normale $N(R)$} ou $\lhd R \rhd$ ou $gp_{\Fa}(R)$ dans $\Fa$ est
+  définie par
+    \[\bigcap_{\substack{N \lhd \Fa \\ R \subset N}}N.\]
+  Il faut vérifier que 
+  \begin{itemize}
+  \item $N(R) \lhd \Fa$;
+    
+  \item $N(R) = \left\{ \prod_{r_{ij} \in R}w_{ij} r_{ij}^{\epsilon_j}w_{ij}^{-1} \right\}$ où $\epsilon_j =
+    \pm 1$, $r_{ij} \in R$ et $w_{ij} \in \Fa$.
+  \end{itemize}
+  C'est en fait le plus petit sous-groupe normal contenant $R$.\\
+
+  Si $G$ a une partie génératrice $A$, d'après la PU on a $G \cong \Fa/\ker \phi$ où $\phi: \Fa
+  \xrightarrow{\mathrm{surj.}} G$. Alors si $\ker \phi = \lhd R \rhd$, on dit que $G$ est donné par la
+  présentation $\langle A | R \rangle$. Les éléments de $A$ sont les \emph{générateurs} et les éléments de $R$
+  sont les \emph{relateurs}.
+
+  \begin{rems}
+    \begin{enumerate}
+    \item Si $|A|<+\infty$, on dit que $G$ est \emph{finiment engendré}.
+    \item Si $|A|<+\infty$ et $|R|<+\infty$, on dit que $G$ est \emph{finiment présenté}.
+    \end{enumerate}
+  \end{rems}
+
+  \begin{rems}
+    \begin{enumerate}
+    \item Si $S$ est un ensemble et $R \subset \F(S)$, la présentation $\langle S | R \rangle$ définit un
+      \emph{unique groupe} (à isomorphisme près), le groupe $G = \F(S)/\lhd R \rhd$.
+
+    \item Un groupe admet une infinité de présentations.
+    \end{enumerate}
+  \end{rems}
+
+  \begin{exs}
+    \begin{enumerate}
+    \item Le groupe trivial: $T = \langle x | x = 1 \rangle$, $T = \langle a, b | a = b = 1 \rangle$.
+
+    \item $(\Z^2, +) = \langle a, b | ab = ba \rangle$ où $a = (1,0)$ et $b=(0,1)$.
+    \item $F_2 = \langle a,b | - \rangle$.
+    \item $\Z/r\Z \times \Z/s\Z = C_r \times C_s = \langle x,y | x^r = 1, y^s = 1, xy = yx \rangle =
+      \F(x,y)/\lhd x^r, y^s , [x,y] \rhd$ où $[x,y] = xyx^{-1}y^{-1} = 1$ est le commutateur.
+    \item $G = \langle X | R \rangle$, $H = \langle Y | S \rangle$, $G \times H = \langle X \cup Y | R \cup S,
+      xy = yx, x \in X, y \in Y \rangle$. \qedhere
+    \end{enumerate}
+  \end{exs}
+  
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../GAC_cours.tex" 
+%%% End:

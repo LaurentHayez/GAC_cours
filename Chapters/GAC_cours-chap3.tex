@@ -1,0 +1,162 @@
+%---------------------------------------------------------%
+%______//------             GAC             ------\\______%
+%______||------         Chapitre 3          ------||______%
+%______\\------     Problèmes de Dehn       ------//______%
+%---------------------------------------------------------%
+
+\chapter{Problèmes de Dehn}
+
+  Supposons que $G$ soit donné par une présentation finie $\langle S | R\rangle$.
+  \begin{itemize}
+  \item[(1)] (PM) Problème des mots: soit $w \in \F(S)$. Est-ce que $w =_G 1$?
+  \item[(1')] (PE) Problème de l'égalité des mots: soient $w_1, w_2 \in \F(S)$, est-ce que $w_1 =_G w_2 \iff
+    w_1w_2^{-1} =_G 1$?
+  \item[(2)] (PC) Problème de conjugaison: soient $w, v \in \F(S)$. Est-ce qu'il existe $g \in \F(S)$ tel que
+    $g^{-1}wg =_G v$?
+  \item[(3)] (PI) Problème de l'isomorphisme: soit $G_1 = \langle S_1|R_1 \rangle$ et $G_2 = \langle S_2 | R_2
+    \rangle$ des présentations finies. Est-ce que $G_1 \cong G_2$?
+  \end{itemize}
+
+  La réponse à ces trois problèmes est qu'ils sont insolubles: il n'existe pas d'algorithme pour décider s'il
+  y a une solution pour les trois questions (Adyan, Novikov-Boone, 1950-1960).
+
+  \begin{ex}
+    Soit $G = \langle x,y | x^2y^3 = x^3y^4 = 1\rangle$. On a que $x^3y^4 = 1 = x(x^2y^3)y = xy$, donc $x =
+    y^{-1}$ et $y = x^{-1}$. Ainsi $x^2y^3 = x^2(x^{-1})^3 = x^{-1} = 1$, d'où $x = y = -1$. Ainsi $G$ est le
+    groupe trivial!
+  \end{ex}
+
+
+  \begin{prop}
+    Le problème des mots et le problème de conjugaison sont des invariants algébriques, ie pour deux
+    présentations finies $\langle S_1|R_1\rangle, \langle S_2 |R_2\rangle$ d'un même groupe $G$, on a que les
+    problème des mots pour $\langle S_1| R_1\rangle$ est résoluble ssi le problème des mots pour $\langle S_2
+    | R_2\rangle$ est résoluble (pour PE aussi).
+  \end{prop}
+
+  \begin{preuve}
+    Exercice. L'idée est que si on peut exprimer un mot dans $S_1$, on peut aussi l'exprimer dans $S_2$.
+  \end{preuve}
+
+  \section{Les problèmes de Dehn pour les groupes libres}
+  \label{sec:pb-dehn-grps-libres}
+
+    Soit $A = \{a, b, c, \ldots \}$, et $\Fa$ le groupe libre sur $A$. 
+    \begin{enumerate}
+    \item Problème des mots: soit $w =_{\Fa} 1 \iff $ après réductions, $w$ est le mot vide.
+
+          $caa^{-1}b^{-2}b^2c^{-1} = 1$ (ou $\epsilon$) par réductions.
+
+    \item[(1')] Problème d'égalité: $w_1, w_2$ deviennent $w_1', w_2'$ après réduction et on a que $w_1 =_{\Fa} w_2
+      \iff w_1' \equiv w_2'$.
+    \end{enumerate}
+
+    \subsection{Problème de conjugaison pour les groupes libres}
+    \label{sec:pb-conjugaison-grp-libre}
+
+    \begin{defi}
+      Si $w \in \Fa$ et $w = ava^{-1}$ avec $a \in A$ et $v \in \Fa$, l'opération $w
+      \xrightarrow{\text{c. réd.}} v$ (enlever les $a$ et $a^{-1}$) s'appelle \emph{réduction cyclique de $w$}.
+    \end{defi}
+
+    \begin{ex}
+      $w = a^{-1}bca^2b^{-1}a \xrightarrow{c.} bca^2b^{-1} \xrightarrow{c.} ca^2$.
+    \end{ex}
+
+    \begin{defi}
+      Un mot $w$ est \emph{cycliquement réduit} s'il n'a pas une forme $w = ava^{-1}$, $a \in A, v \in \Fa$.
+    \end{defi}
+
+    \begin{defi}
+      Deux mots $v, w$ sont \emph{conjugués cycliques} s'il existe des mots $\alpha$ et $\beta$ tels que $w =
+      \alpha \beta$ et $v = \beta \alpha$.
+    \end{defi}
+
+    \begin{ex}
+      $w = aab^{-1}c$. Un conjugué cyclique est $ab^{-1}ca$, en continuant on a $b^{-1}ca^2$, etc...
+    \end{ex}
+
+    L'algorithme pour résoudre le problème de conjugaison est le suivant. Soient $w_1$ et $w_2$ deux mots. On
+    commence par faire la réduction cyclique des deux mots pour obtenir $w_1'$ et $w_2'$. $w_1'$ et $w_2'$
+    sont donc cycliquement réduits. Si $w_1'$ et $w_2'$ sont conjugués cycliques, alors il existe $g$ tel que
+    $gw_1g^{-1} = w_2$.
+
+    \begin{ex}
+      Soient $w_1 = cabc^{-1}$ et $w_2 = abbab^{-1}a^{-1}$. On effectue la réduction cyclique:
+        \[w_1 \xrightarrow{c} ab, \quad w_2 \xrightarrow{c} bbab^{-1} \xrightarrow{c} ba.\]
+      $ab$ et $ba$ sont conjugués cycliques, donc $w_1$ et $w_2$ sont conjugués. À la fin on obtient que 
+        \[w_1 = (cab^{-1}a^{-1})w_2(cab^{-1}a^{-1})^{-1},\]
+      ainsi $g = cab^{-1}a^{-1}$.
+    \end{ex}
+
+    \subsection{Problème de l'isomorphisme pours les groupes libres}
+    \label{sec:pb-isom-grps-libres}
+
+    Pour deux présentations $\langle X_1 | R_1 \rangle$ et $\langle X_2 | R_2 \rangle$, il n'y pas
+    d'algorithme pour résoudre le problème de l'isomorphisme.
+
+
+    Mais ici on sait qu'on a deux groupes libres.
+
+    \begin{theo}
+      Soient $X,Y$ deux ensembles (finis ou infinis). On a que $\F(X) \cong \F(Y) \iff |X| = |Y|$ ($|X| = |Y|$
+      s'il y a une bijection $f:X \to Y$).
+    \end{theo}
+
+    \begin{preuve}
+      \begin{description}
+      \item["$\Rightarrow$":] Supposons qu'on ait une bijection $f: X \to Y$. Alors il existe $g = f^{-1}:Y
+        \to X$. Par la propriété universelle, on a $\tilde{f}: X \to \F(Y)$, $i_X: X \hookrightarrow \F(X)$ et
+        il existe un unique homomorphisme $\phi: \F(X) \to \F(Y)$. Même chose pour $Y$ on prend $\tilde{g}$,
+        $i_Y$ et $\psi$.
+
+        \begin{center}
+          \begin{tikzcd}[column sep=small]
+            X \arrow[rr, "\tilde{f}"] \arrow[rd, hookrightarrow, "i_X"] & & \F(Y) & &  
+            X \arrow[rr, "\tilde{g}"] \arrow[rd, hookrightarrow, "i_Y"] & & \F(X) & &  
+            X \arrow[rr, hookrightarrow, "i_X"] \arrow[rd, hookrightarrow, "i_X"] & & \F(X)  \\
+             & \F(X) \arrow[ru, "\phi"] & & & & \F(Y) \arrow[ru, "\psi"] & & & & \F(X) \arrow{ru}[below right]{!\alpha =
+            id_{\F(X)}} & 
+          \end{tikzcd}
+        \end{center}
+        
+        Alors $\psi \circ \phi : \F(X) \to \F(X)$ est une extension de $i_X$. Par l'unicité dans la propriété
+        universelle, $\psi \circ \phi = id_{\F(X)}$.
+        
+        De même $\phi \circ \psi: \F(Y) \to \F(Y)$ est égal à $id_{\F(Y)}$. Donc $\phi$ et $\psi$ sont des
+        isomorphismes et ainsi $\F(X) \cong \F(Y)$.
+
+      \item["$\Leftarrow$":] Si $\F(X) \cong \F(Y)$, alors $|X| = |Y|$. Soit $N(X) = \langle g^2 | g \in \F(X)
+        \rangle$. Montrons que $N(X)$ est un sous-groupe normal. La partie sous-groupe est claire, il reste
+        donc à montrer qu'il est normal. $gh^2g^{-1} = (ghg^{-1})(ghg^{-1}) = (ghg^{-1})^2 \in N(x)$ (ce n'est
+        pas la preuve complète, mais c'est l'idée). Ainsi $N(x) \lhd \F(X)$ et $\F(X)/N(X)$ est un groupe
+        abélien, un 2-groupe, ie $x^2 = 1 \forall x \in \F(X)/N(X)$.
+        \begin{enumerate}
+        \item $(gN)^2 = gNgN = g^2N = N$ ce qui montre que c'est un 2-groupe.
+        \item $(xy)^2 = 1 \implies xyxy = 1 \implies xy = y^{-1}x^{-1} = yx$ car les éléments sont d'ordre 2, ce
+          qui montre que $\F(X)/N(X)$ est abélien.
+        \end{enumerate}
+        
+        Notons $V(X) = \F(X)/N(X) = \underbrace{\Z/2\Z \oplus \cdots \oplus \Z/2\Z}_{|X|}$ car chaque élément
+        engendre un groupe cyclique d'ordre 2. Ainsi $V$ est $\Z/2\Z$-espace vectoriel avec base $X$ et de
+        dimension $|X|$.
+
+        Comme $\F(X) \cong \F(Y)$ on a que $\F(X)/N(X) \cong \F(Y)/N(Y) \implies V(X) \cong V(Y) \implies
+        |X|=|Y|$ car deux espaces vectoriels isomorphes ont des bases de mêmes cardinalités.
+      \end{description}
+    \end{preuve}
+
+    
+
+    
+
+    
+  
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../GAC_cours.tex" 
+%%% End:
