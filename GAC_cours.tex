@@ -9,7 +9,7 @@
 \usepackage{xcolor}
 \usepackage{amsmath, amssymb, mathrsfs, amsthm, thmtools, MnSymbol}
 \usepackage[framemethod=tikz]{mdframed}
-\usepackage{pgf, pgfplots, tikz}
+\usepackage{pgf, pgfplots, tikz, pst-solides3d}
 \usetikzlibrary{cd} %To draw commutative diagrams
 \usetikzlibrary{arrows}
 \usetikzlibrary{shapes}
@@ -152,6 +152,9 @@
 
 
 \renewcommand{\labelitemi}{\textbullet}
+
+\tikzset{math3d/.style=
+{x= {(-0.353cm,-0.353cm)}, y={(1cm,0cm)}, z={(0cm,1cm)}}}
 
 
 \maketitle

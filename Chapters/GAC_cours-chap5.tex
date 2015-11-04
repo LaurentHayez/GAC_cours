@@ -24,7 +24,7 @@
 
     
     Un arc peut être inversé:
-      \[\tilde{\gamma}(t) = \gamma(1-t).\]
+      \[\check{\gamma}(t) = \gamma(1-t).\]
     Deux arcs $\gamma, \delta$ peuvent être composés si l'origine de $\delta$ est l'extrémité de $\gamma$. 
       \[(\gamma\delta)(t) =
       \begin{cases}
@@ -114,12 +114,12 @@
     
     \subsection{Groupe fondamental}
 
-    \begin{theo}[-définition] index{Groupe!Fondamental}
+    \begin{theo}[-définition] \index{Groupe!Fondamental}
       On note $\Pi_1(X, x_o)$ l'ensemble des classes d'homotopie des lacets de $X$ basés en $x_o$. Avec la
       multiplication $[\gamma][\delta] = [\gamma \delta]$, $\Pi_1(X, x_0)$ est un groupe, appelé \emph{groupe
         fondamental} de $X$ (en $x_0$).
 
-      L'élément neutre est $[\epsilon_{x_0}]$ et l'inverse de $[\gamma]$ est $[\tilde{\gamma}]$.
+      L'élément neutre est $[\epsilon_{x_0}]$ et l'inverse de $[\gamma]$ est $[\check{\gamma}]$.
     \end{theo}
 
     \begin{preuve}
@@ -141,7 +141,7 @@
       Il faut encore montrer que:
       \begin{itemize}
       \item $\epsilon_{x_o}\gamma \sim \gamma \sim \gamma \epsilon_{x_0}$;
-      \item $\gamma \tilde{\gamma} \sim \epsilon_{x_0}$;
+      \item $\gamma \check{\gamma} \sim \epsilon_{x_0}$;
       \item associativité: si $\gamma_0$, $\gamma_1$, $\gamma_2$ sont trois lacets basés en $x_0$,
         $\gamma_0(\gamma_1\gamma_2) \sim (\gamma_0\gamma_1)\gamma_2$.
       \end{itemize}
@@ -155,7 +155,7 @@
 
     \begin{prop}\index{Connexe!par arcs}
       Si $X$ est connexe par arc, alors 
-        \[\Pi_1(X, x_0) \cong \Pi_1(X, y_o)\ \forall x_0, y_0 \in X.\]
+        \[\Pi_1(X, x_0) \cong \Pi_1(X, y_0)\ \forall x_0, y_0 \in X.\]
     \end{prop}
     
     \begin{conseq}
@@ -181,7 +181,7 @@
         \end{tikzpicture}
       \end{center}
       Ainsi pour passer de $\gamma \in \Pi_1(X, x_0)$ à un élément de $\Pi_1(X, y_0)$, on prend
-      $\tilde{\alpha}\gamma \alpha$.
+      $\check{\alpha}\gamma \alpha$.
     \end{preuve}
     
     \begin{defi} \index{Connexe!simplement}
@@ -204,9 +204,32 @@
         \end{tikzpicture}
       \end{center}
       \item Les arbres sont simplements connexes:
-        
-      \item 
-      \item 
+        \begin{center}
+          \begin{tikzpicture}
+            \draw (-1, -1) -- (0,0) -- (1, -1) -- (0,0) -- (1.5, 2) -- (2.5, 1) -- (1.5, 2) -- (2, 3) -- (1,
+            4) -- (2, 3) -- (3, 4);
+            \draw[color = OliveGreen!80] (0,0) node[scale = 0.8]{$\bullet$};
+            \draw[color = OliveGreen!80] (-1,-1) node[scale = 0.8]{$\bullet$};
+            \draw[color = OliveGreen!80] (1,-1) node[scale = 0.8]{$\bullet$};
+            \draw[color = OliveGreen!80] (1.5,2) node[scale = 0.8]{$\bullet$};
+            \draw[color = OliveGreen!80] (2.5,1) node[scale = 0.8]{$\bullet$};
+            \draw[color = OliveGreen!80] (2,3) node[scale = 0.8]{$\bullet$};
+            \draw[color = OliveGreen!80] (1,4) node[scale = 0.8]{$\bullet$};
+            \draw[color = OliveGreen!80] (3,4) node[scale = 0.8]{$\bullet$};
+          \end{tikzpicture}
+        \end{center}
+      \item L'ensemble suivant est homéomorphe à $[0,1] \times [0,1]$.
+        \begin{center}
+          \begin{tikzpicture}
+            \draw (0,0) arc(90:270:2);
+            \draw (0,-1) arc(90:270:1);
+            \draw (0, 0) arc(90:-90:0.5); 
+            \draw (0, -3) arc(90:-90:0.5);
+            \filldraw[color = OliveGreen!80, opacity = 0.15] (0,0) arc(90:270:2) arc(-90:90:0.5) 
+            arc(270:90:1) arc(-90:90:0.5);
+          \end{tikzpicture}
+        \end{center}
+      \item Pour $n \geq 2$, la sphère $\mathbb{S}^{n}$ est simplement connexe ($S^1$ n'est pas simplement connexe).
       \end{enumerate}
     \end{exs}
 
@@ -242,9 +265,24 @@
 
         Si on enlève à $\Pi^2$ un petit disque ouvert $D$, le bord de $D$ est $a_1a_2a_1^{-1}a_2^{-1}$ dans
         $\Pi_1(X)$, où $X = \Pi^2 \setminus D$. En fait, $\Pi_1(X) \cong \F_2 = \langle a_1, a_2 \rangle$
-        ($\F_2$ est le groupe libre. 
+        ($\F_2$ est le groupe libre). 
+
+        
+        \begin{center}
+          \begin{tikzpicture}
+            \draw plot[domain = 0:2*pi, samples = 80]({5*cos(\x r)}, {3*sin(\x r)});
+            \draw plot[domain = pi:2*pi, samples = 80]({3*cos(\x r)}, {1*sin(\x r)+0.6});
+            \draw plot[domain = 0:pi, samples = 80]({2*cos(\x r)}, {0.5*sin(\x r)-0.15});
+            % % TO ADD: cercles générateurs du tore + petit cercle à enlever
+          \end{tikzpicture}
+        \end{center}
 
       \item On a que $\Pi_1(\Sigma_2) = \langle a_1, a_2, b_1, b_2 | [a_1, a_2][b_1, b_2] = 1 \rangle$.
+        \begin{center}
+          \begin{tikzpicture}
+            % TODO: Dessiner double tore
+          \end{tikzpicture}
+        \end{center}
       \end{enumerate}
     \end{exs}
 
@@ -272,7 +310,17 @@
         \[D_\infty \cong \Z/2\Z \ast \Z/2\Z\]
       où $\Z/2\Z = \langle s_1 \rangle$ et $\Z/2\Z = \langle s_2 \rangle$. En effet, prenons
       \begin{center}
-        Insérer figure ici
+        \begin{tikzpicture}
+          \draw[->, >=latex] (-5, 0) -- (5,0) node[right]{$\R$};
+          \draw (-2, 0) node[scale=0.8]{$\bullet$} node[above left]{$-1$};
+          \draw (2, 0) node[scale=0.8]{$\bullet$} node[above right]{$1$};
+          \draw (0,0.2) -- (0, -0.2);
+          \draw (0,0) node[above right]{$0$};
+          \draw[dashed, color = OliveGreen!80] (-2, 1) -- (-2, -1);
+          \draw[dashed, color = OliveGreen!80] (2, 1) -- (2, -1);
+          \draw[<->, >=latex, color = OliveGreen!80] (-3, 0) to[bend right] node[midway, below left]{$s_1$} (-1, 0);
+          \draw[<->, >=latex, color = OliveGreen!80] (1, 0) to[bend right] node[midway, below right]{$s_2$} (3, 0);
+        \end{tikzpicture}
       \end{center}
       On voit que pour tout $s_{i_1} \cdots s_{i_k}$ avec $i_j \neq i_{j+1}$, on a $s_{i_1} \cdots s_{i_k}
       \neq 0$, ainsi $s_{i_1} \cdots s_{i_k} \neq \epsilon_{D_\infty}$.
@@ -302,9 +350,19 @@
 
   \begin{exs} \index{Bouquet!à deux cercles} \index{Bouquet!à $n$ cercles}
     \begin{enumerate}
-    \item Le bouquet à deux cercles.
+    \item Le bouquet à deux cercles. Si $X = U \cup V$, on a $U \cap V = \{x\}$.
       \begin{center}
-        Insérer figure ici
+        \begin{tikzpicture}
+          \draw (0,0) node[scale=0.8]{$\bullet$} node[above]{$x$};
+          \draw[color = OliveGreen, ->, >=latex] 
+               plot[domain={pi/2}:{3*pi/2}, samples = 80] 
+                   ({((2*cos(\x r))/(1+sin(\x r)*sin(\x r)))}, {((2*sin(\x r)*cos(\x r)/(1+sin(\x r)*sin(\x r))))});
+           \draw[color = RoyalBlue, ->, >=latex] 
+               plot[domain={-pi/2}:{pi/2}, samples = 80] 
+                   ({((2*cos(\x r))/(1+sin(\x r)*sin(\x r)))}, {((2*sin(\x r)*cos(\x r)/(1+sin(\x r)*sin(\x r))))});
+           \draw[color = OliveGreen!80] (-2, 0) node[right]{$U$};
+           \draw[color = RoyalBlue] (2, 0) node[left]{$V$};
+        \end{tikzpicture}
       \end{center}
       Le groupe fondamental est
         \[\Pi_1(X) = \Pi_1(U) \ast \Pi_1(V) = \Z \ast \Z = \F_2.\]
@@ -315,6 +373,16 @@
           \[\Pi_1(X \wedge Y) = \Pi_1(X, x_0) \ast \Pi_1(Y, y_0).\]
         Par exemple si on prend $X = S^1$ et $Y = \Pi^2$, on obtient la chose suivante pour $X \wedge Y$.
 
+        \begin{center}
+          \begin{tikzpicture}
+            \draw plot[domain = 0:2*pi, samples = 80]({5*cos(\x r)}, {3*sin(\x r)});
+            \draw plot[domain = pi:2*pi, samples = 80]({3*cos(\x r)}, {1*sin(\x r)+0.6});
+            \draw plot[domain = 0:pi, samples = 80]({2*cos(\x r)}, {0.5*sin(\x r)-0.15});
+            \draw[color = OliveGreen] (-3, -1) node[scale = 0.8]{$\bullet$} node[below right]{$x_0 = y_0$};
+            \draw[color=OliveGreen] (-3, 0) circle(1);
+          \end{tikzpicture}
+        \end{center}
+
       \item On appelle $B_n$ le bouquet de $n$ cercles. Alors
           \[\Pi_1(B_n) = \F_n = \langle a_1, \ldots, a_n\rangle. \]
         Plus généralement, si $X = (V,E)$ et un graphe connexe avec $n = |V|$, $m = |E|$ vu comme espace
@@ -322,12 +390,47 @@
           \[\Pi_1(X) \cong \F_{m-n+1}.\]
         Par exemple si $G$ est le graphe suivant:
         \begin{center}
-          Insérer graphe ici
+          \begin{tikzpicture}
+            \node[scale=0.8] (a) at (0,0) {$\bullet$};
+            \node[scale=0.8] (b) at (1,0) {$\bullet$};
+            \node[scale=0.8] (c) at (0,-1) {$\bullet$};
+            \node[scale=0.8] (d) at (1,-1) {$\bullet$};
+            \draw (a.center) -- (b.center) -- (c.center) -- (d.center) -- (a.center) -- (c.center);
+            \draw (b.center) -- (d.center);
+            \draw (a.center) -- (b.center) -- (c.center) -- (d.center) -- (a.center) -- (c.center);
+            \draw (b.center) -- (d.center);
+            \draw[color=OliveGreen, line width=1.5pt, opacity = 0.1] (c.center) -- (a.center) -- (b.center) --
+            (a.center) -- (d.center);
+          \end{tikzpicture}
         \end{center}
           \[\Pi_1(G) = \F_{6-4+1} = \F_3.\]
         En effet, soit $\mathcal{T}$ un \emph{arbre maximal} \index{Arbre!maximal} de $X$ (un \emph{arbre
           maximal} est un sous-graphe de $X$, sans circuit passant par tous les sommets). En contractant
         $\mathcal{T}$ sur un point, on obtient un bouquet à $m-n+1$ cercles, car $\mathcal{T}$ a $n-1$ arêtes.
+        \begin{center}
+          \begin{tikzpicture}
+            \node[scale=0.8] (a) at (0,0) {$\bullet$};
+            \node[scale=0.8] (b) at (1,0) {$\bullet$};
+            \node[scale=0.8] (c) at (0,-1) {$\bullet$};
+            \node[scale=0.8] (d) at (1,-1) {$\bullet$};
+            \draw (a.center) -- (b.center) -- (c.center) -- (d.center) -- (a.center) -- (c.center);
+            \draw (b.center) -- (d.center);
+            \draw[color=OliveGreen, line width=1.5pt, opacity = 0.1] (c.center) -- (a.center) -- (b.center) --
+            (a.center) -- (d.center);
+            \begin{scope}[xshift = 3cm]
+               \node[scale=0.8] (a) at (0,0) {$\bullet$};
+               \node[scale=0.8] (b) at (1,0) {$\bullet$};
+               \node[scale=0.8] (c) at (0,-1) {$\bullet$};
+               \node[scale=0.8] (d) at (1,-1) {$\bullet$};
+               \draw (a.center) -- (b.center) -- (c.center) -- (d.center) -- (a.center) -- (c.center);
+               \draw (b.center) -- (d.center);
+               \draw[color=OliveGreen, line width=1.5pt, opacity = 0.1] (a.center) -- (b.center) -- (c.center)
+               -- (d.center);
+            \end{scope}
+          \end{tikzpicture}
+        \end{center}
+        Ci-dessus on a des arbres maximaux, car il reste 3 arêtes quand on contracte les arêtes vertes (on
+        obtient donc un bouquet à 3 arêtes, dont le $\Pi_1$ est $\F_3$).
     \end{enumerate}
   \end{exs}
 
@@ -349,11 +452,28 @@
       c'est-à-dire un voisinage connexe par arcs tel que $p^{-1}(U_x)$ est homéomorphe à $p^{-1}(x) \times
       U_X$, par un homéomorphisme $h_x: p^{-1}(U_x) \to p^{-1} \times U_x$ tel que le diagramme suivant
       commute (où $p_2$ est la projection sur le 2ème facteur).
+      \begin{center}
+        \begin{tikzcd}[column sep = small]
+          p^{-1}(U_x) \arrow[rr, "h_x"] \arrow[rd, "p \big|_{p^{-1}(U_x)}" below left] & & p^{-1}(x) \times U_x \\
+          & U_x \arrow[ru, leftarrow, "p_2" below right] &
+        \end{tikzcd}
+      \end{center}
     \end{itemize}
     L'image mentale d'un revêtement est celle de la ``pile d'assiettes''.
 
     \begin{center}
-      Insérer image ici.
+      \begin{tikzpicture}
+        \draw (-5, 0) -- (5, 0) node[right]{$X$};
+        \draw (0,0) node[scale=0.8]{$\bullet$};
+        \draw[color = OliveGreen, line width = 1.5pt, opacity = 0.1] (-1,0) to node[near end, below]{$U_x$} (1,0);
+        \draw (-3.5, 3) arc(225:315:5) node[right]{$Y$};
+        \foreach \x in {1,2,...,5} {
+          \draw[color = RoyalBlue] (0,{1.5+(\x/2)}) node[scale=0.8]{$\bullet$};
+          \draw[color = OliveGreen, line width = 1.5pt, opacity = 0.1] (-1,{1.5+(\x/2)}) -- (1,{1.5+(\x/2)});
+        }
+        \draw[color=RoyalBlue] (0, 2) node[below]{$p^{-1}(x)$};
+        \draw[color=OliveGreen] (-1, 4) node[above]{$p^{-1}(U_x)$};
+      \end{tikzpicture}
     \end{center}
 
     On dira que $\substack{Y\\\downarrow\\ X}p$ est un \emph{revêtement à $n$ feuillets} \index{Revêtement!à
@@ -385,11 +505,48 @@
   \begin{lem} \label{lem:lemme-A}
     Soit $\substack{Y\\\downarrow\\ X}p$ un revêtement. Soit $Z$ un espace connexe et soient $f_0, f_1 : Z
     \to Y$ deux applications continues avec $p \circ f_0 = p \circ f_1$. Alors $\{z \in Z | f_o(z) = f_1(z)\}
-    = \varnothing \lor Z$.
+    = \varnothing$ ou $Z$.
+    \begin{center}
+      \begin{tikzpicture}
+        \draw (0,0) node[scale=0.8]{$\bullet$} node[above]{$Z$};
+        \draw (0,-1) node[scale=0.8]{$\bullet$} node[right]{$Y$};
+        \draw (0, -2) node[scale=0.8]{$\bullet$} node[right]{$X$};
+        \draw[->, >=latex] (0,0) to[bend right] node[midway, left] {$f_0$} (0, -1);
+        \draw[->, >=latex] (0,0) to[bend left] node[midway, right] {$f_1$} (0, -1);
+        \draw[->, >=latex] (0,-1) to node[midway, left] {$p$} (0, -2);        
+      \end{tikzpicture}
+    \end{center}
   \end{lem}
 
   \begin{preuve}
     Exercice.
+    \begin{center}
+      \begin{tikzpicture}[math3d]
+        % Draw helix
+        \draw [domain=-2*pi:2*pi, samples=80, smooth] plot ({cos(\x r)}, {sin(\x r)}, \x/pi) ;
+        % Draw circle
+        \draw (0,0, -4) circle(1);
+        % Draw alpha on helix
+        \draw [domain=0:pi, samples=80, smooth, color = OliveGreen!80, line width = 2pt] plot ({cos(\x r)},
+        {sin(\x r)}, \x/pi) node[xshift = 0.5cm]{$\tilde{\alpha}$};
+        % Draw alpha on circle
+        \draw [domain=0:pi, samples=80, smooth, color=OliveGreen!80, line width = 2pt] plot ({cos(\x r)},
+        {sin(\x r)}, -4);
+        % Draw points
+        \draw[color=OliveGreen!80] (0, 1, -4) node[right]{$\alpha$};
+        \draw[color=OliveGreen!80] (1, 0, -4) node[scale=0.8]{$\bullet$} node[below]{$x_0$};
+        \draw[color=OliveGreen!80] (1, 0, 0) node[scale=0.8]{$\bullet$} node[below]{$y_0$};
+        % Draw arrow from helix to circle
+        \draw[->, >=latex] (0, 0, -2.5) to[bend left] node[midway, left]{$p$} (0,0,-3.5);
+        %Second Figure
+        \draw (0, 6, 1.3) node{$Z = [0,1]$};
+        \draw[->, >=latex] (0, 5.8, 1) to node[midway, left]{$\tilde{\alpha_0}$} (0, 5.8, 0);
+        \draw[->, >=latex] (0, 6.2, 1) to node[midway, right]{$\tilde{\alpha_1}$} (0, 6.2, 0);
+        \draw (0, 6, -0.3) node{$Y$};
+        \draw[->, >=latex] (0, 6, -0.6) to node[midway, left]{$p$} (0, 6, -1.3);
+        \draw (0, 6, -1.6) node{$X$};
+      \end{tikzpicture}
+    \end{center}
   \end{preuve}
 
   \begin{lem}[relèvement des chemins] \index{Relèvement!de chemins} \label{lem:lemme-B}
@@ -497,8 +654,19 @@
      Soit $n=2$. Alors $\F_2$ est le groupe fondamental du bouquet à deux boucles, qu'on appelle $a_1$ et
      $a_2$. Pour $k = 3$, on a le revêtement $X_H$ suivant:
      \begin{center}
-       Insérer figure ici.
+       \begin{tikzpicture}
+         \node[scale=0.8] (a) at (0, 0) {$\bullet$};
+         \node[scale=0.8] (b) at (4, 0) {$\bullet$};
+         \node[scale=0.8] (c) at (8, 0) {$\bullet$};
+         \draw[->, >=latex, color = OliveGreen] (c.center) to[bend right] node[midway, above]{$a_1$} (a.center);
+         \draw[->, >=latex, color = OliveGreen] (c.center) to[bend left] node[midway, below]{$a_2$} (a.center);
+         \draw[->, >=latex, color = RoyalBlue] (a.center) to[bend left] node[midway, above]{$a_1$} (b.center);
+         \draw[->, >=latex, color = RoyalBlue] (a.center) to[bend right] node[midway, below]{$a_2$} (b.center);
+         \draw[->, >=latex, color = red] (b.center) to[bend left] node[midway, above]{$a_1$} (c.center);
+         \draw[->, >=latex, color = red] (b.center) to[bend right] node[midway, below]{$a_2$} (c.center);
+       \end{tikzpicture}
      \end{center}
+     $X_H$ a $k$ sommets de degré $2n$ et a $\frac{k\cdot 2n}{2} = k\cdot n$ arêtes.
    \end{ex}
 
     

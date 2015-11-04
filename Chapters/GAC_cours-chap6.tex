@@ -98,7 +98,15 @@
      Il y a un unique homomorphisme $\phi^1: \F(x,y) \to G$ tel que $\phi^1(x) = \phi(x)$ et
      $\phi^1(y^{-1}w(X)) = 1$ pour $x \in X$.
 
-     L'homomorphisme $\phi^1: \F(X,y) \to G$ se factorise comme $F(X,y) \xrightarrow{\chi} \F(X)
+     \begin{center}
+       \begin{tikzcd}
+         X \cup \{y^{-1} \omega(X)\} \arrow[r] \arrow[d, "f"] & \F(X,y) = \F(X \cup \{y^{-1}\omega(X)\})
+         \arrow[d, "\chi"]\\
+         G \arrow[ru, leftarrow, "\phi^1!"] \arrow[r, leftarrow, "\phi"] & \F(X)
+       \end{tikzcd}
+     \end{center}
+
+     ($f(x) = x$ si $x \in X$ et $1$ si $x = y^{-1} \omega(X)$). L'homomorphisme $\phi^1: \F(X,y) \to G$ se factorise comme $F(X,y) \xrightarrow{\chi} \F(X)
      \xrightarrow{\phi} G$ où $\chi(x) = x$ pour tout $x \in X$ et $\chi(y) = w(x)$. Alors $\phi^1$ est
      surjective et
        \[\ker \phi^1 = \chi^{-1}(\phi^{-1}(1)) = \chi^{-1} \left( gp_{\F(X)}R \right) = gp_{\F(X,y)}(R \cup
