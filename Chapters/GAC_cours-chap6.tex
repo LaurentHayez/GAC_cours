@@ -146,8 +146,231 @@
      \rangle$ est une présentation finie pour $G$.
    \end{prop}
 
+   \section{Algorithme de Todd-Coxeter (1936) (Coset enumeration)}
+   \label{sec:algorithme-de-todd-loxeter}
+
+   Étant donné un groupe $G$, défini par une présentation finie $G = \langle X, R \rangle$, et un sous-groupe
+   $H$ de $G$ d'indice fini dans $G$, on souhaite énumérer les éléments du quotient $G/H$ et décrire l'action
+   de $G$ sur $G/H$. 
+
+   \subsection{Version basique}
+   \label{sec:version-basique-todd-coxeter}
+
+      Si $H = \{1\}$, l'algorithme va énumérer les éléments de $G$, si $G$ est fini.
+
+     \begin{algorithm}
+       \caption{Algorithme de Todd-Coxeter (basique)}
+       \label{alg:todd-coxeter-basique}
+       \begin{algorithmic}
+         \State $\forall r \in R$, créer un tableau de $|r|+1 colonnes$.
+         \State Si $r = x_1 \cdots x_n$, le tableau est
+         \begin{tabular}{ccccccc}
+           & $x_1$ & & $x_2$ & $\cdots$ & $x_n$ & \\
+            1 & 2 & & & & & 1 \\
+            2 &   & & & & & 2
+         \end{tabular}
+         \begin{tabular}{cc}
+           & \\
+           $1x_1 = 2$ & 
+         \end{tabular}
+         \State On pose $1$ dans la première et la dernière colonne (1 pour $1_G$)
+         \State On pose $2$ à la droite de $1$, ça s'appelle la \og définition\fg de $2$ et on le pose dans un
+         autre tableau, qui s'appelle le \emph{tableau de définitions}. \index{Tableau de définitions} La
+         notation $1 x_1 = 2$ ou $2 x_1^{-1} = 1$ ($1 = 1_G$, $2 = x_1$).
+         \State On pose $2$ dans la première et la dernière colonne, deuxième ligne.
+         \State S'il y a un 2 à la gauche de $x_1^{-1}$, on pose $1$ à droite de ce 2.
+         \State S'il y a un 2 à la droite de $x_1$, on pose $1$ à la gauche de $x_1$.
+         \State On pose $3, 4, \ldots$ dans le tableau jusqu'à ce qu'il n'y ait plus d'espaces vides.
+       \end{algorithmic} 
+     \end{algorithm}
+     
+
+     \begin{rem} \label{rem:rem-1}
+       Chaque nombre $1, 2, 3, \ldots$ représente un élément de $G$.
+     \end{rem}
+     
+
+     \begin{rem} \label{rem:rem-2}
+       Supposons qu'on ait une définition $i x_l = j$, et dans le tableau on ait aussi $k$ à la droite de
+       $x_{l+1}$, on a $kx_{l+1}^{-1} = j \iff jx_{l+1} = k$. On appelle cela un \emph{bonus}. \index{Bonus}
+       \begin{center}
+         Ajouter tableau ici
+       \end{center}
+       Dans le tableau, on note $-$ quand on a une définition, et $=$ lorsqu'on a un bonus.
+     \end{rem}
 
 
+     \begin{ex}
+       Soit $G = \langle x\ |\ x^4 = 1\rangle \cong \Z/4\Z$. L'unique relateur est $x^4$.
+       \begin{center}
+         Insérer tableaux ici.
+       \end{center}
+       Donc $|G| = 4$, avec $1 = 1_g$, $2 = x$, $3 = x^2$ et $4 = x^3$.
+     \end{ex}
+
+     
+
+
+     \begin{theo}
+       Si $G$ est fini, l'algorithme de Todd-Coxeter s'arrête avec un tableau complet pour chaque relateur
+       après un nombre fini d'étapes.
+
+       L'ensemble de sortie donné par l'algorithme contient tous les éléments de $G$, mais aussi l'action à
+       droite de générateurs de $G$ sur $G$.
+     \end{theo}
+
+
+     \subsection{Version générale}
+
+       Soit $G = \langle X | R \rangle$, $H$ un sous-groupe de $G$ et $H \neq \{1\}$. Si $H = \langle Y
+       \rangle$, alors $H$ est donné par un ensemble $Y$ de générateurs qui sont des mots sur $X$.
+
+       \paragraph{But:} On obtient $|G:H|$ si $|G:H| < \infty$, l'action de $G$ sur $G/H$, et un ensemble de
+       représentants de classes à droite de $H$.
+
+       
+       \begin{algorithm}
+       \caption{Algorithme de Todd-Coxeter}
+       \label{alg:todd-coxeter}
+       \begin{algorithmic}
+         \State L'algorithme est le même que celui de la version basique, mais on ajoute un tableau pour chaque générateur de $H$.
+         \State L'algorithme se termine quand tous les espaces dans les tableaux des relateurs sont remplis.
+         \State $|G:H| = $ nombre de lignes en chaque tableau.
+       \end{algorithmic} 
+     \end{algorithm}
+
+     \begin{ex}
+       Soit $G = \langle x | x^6 = 1 \rangle$, $H = \langle x^3 \rangle$. Ici, $1 = H$.
+       \begin{tabular}{c|c|c|c|c|c|c}
+         & $x$ & $x$ & $x$ & $x$ & $x$ & $x$ \\
+         \hline
+         1 & -2 & -3 & 1 & 2 & 3 & 1\\
+         \hline
+         2 & 3 & 1 & 2 & 3 & 1 & 2\\
+         \hline
+         3 & 1 & 2 & 3 & 1 & 2 & 3
+       \end{tabular}
+
+       \begin{tabular}{c|c|c|c}
+         & $x$ & $x$ & $x$ \\
+         \hline
+         1 & 2 & 3 & =1
+       \end{tabular}
+
+       \begin{tabular}{c|c}
+         Déf & Bonus \\
+         \hline
+         $1x = 2$ & \\
+         \hline
+         $2x = 3$ & \\
+         \hline
+         & $3x = 1$
+       \end{tabular}
+       
+       On a 3 lignes donc $|G:H| = 3$. Les classes à droites sont $1 = H$, $2 = Hx$ et $3 = Hx^2$. Les
+       représentants sont $\{1, x, x^2\}$.
+     \end{ex}
+
+
+     \begin{ex}
+       Soit $G = \langle x, y | x^3 = 1, y^3 = 1, (xy)^2 = 1 \rangle$ et $H = \langle x \rangle$.
+
+       Tableau pour $H$:
+       
+       \begin{tabular}{c|c}
+         & $x$\\
+         \hline
+         1 & 1
+       \end{tabular}
+      
+       Tableau définition et bonus:
+ 
+       \begin{tabular}{c|c}
+         Déf & Bonus\\
+         \hline
+         & $1x = 1$\\
+         \hline
+         $1y = 2$ & \\
+         \hline
+         $2y = 3$ & \\
+         \hline
+         & $3y = 1$\\
+         \hline
+         & $2x = 3$\\
+         \hline
+         $3x = 4$ & \\
+         \hline
+          & $4x = 2$\\
+         \hline
+          & $4y = 4$
+       \end{tabular}
+       
+
+       Tableaux des relateurs: 
+       
+       \begin{tabular}{c|c|c|c}
+         & $x$ & $x$ & $x$ \\
+         \hline
+         1 & 1 & 1 & 1\\
+         \hline
+         2 & 3 & -4 & =2\\
+         \hline
+         3 & 4 & 2 & 3\\
+         \hline
+         4 & 2 & 3 & 4
+       \end{tabular}
+
+       \begin{tabular}{c|c|c|c}
+          & $y$ & $y$ & $y$ \\
+         \hline
+         1 & -2 & -3 & =1\\
+         \hline
+         2 & 3 & 1 & 2\\
+         \hline
+         3 & 1 & 2 & 3\\
+         \hline
+         4 & 4 & 4 & 4
+       \end{tabular}
+
+       \begin{tabular}{c|c|c|c|c}
+          & $x$ & $y$ & $x$ & $y$ \\
+         \hline
+         1 & 1 & 2 & 3 & 1\\
+         \hline
+         2 & =3 & 1 & 1 & 2\\
+         \hline
+         3 & 4 & 4 & 2 & 3\\
+         \hline
+         4 & 2 & 3 & 4 & 4
+       \end{tabular}
+
+       On voit donc que $|G:H| = 4$ et les classes de $H$ sont $1 = H$, $2 = Hy$, $3 = Hy^2$ et $4 =
+       Hy^2x$. Il y a une action de $G$ sur $G/H = \{1,2,3,4\}$, c'est-à-dire qu'il y a un homomorphisme
+       $\alpha : G \to Sym(4),\ x \mapsto
+       \begin{pmatrix}
+         1 & 2 & 3 & 4\\
+         1 & 3 & 4 & 2
+       \end{pmatrix} = \alpha(x)$ et $y \mapsto
+       \begin{pmatrix}
+         1 & 2 & 3 & 4 \\
+         2 & 3 & 1 & 4
+       \end{pmatrix} = \alpha(y)$. Ainsi l'ordre de $x$ $ord(x) \geq ord(\alpha(x)) = 3$, mais $x^3 = 1$ dans
+       $G$ donc $ord(x) = 3$. Comme $|H| = |\langle x \rangle| = 3 \Rightarrow |G| = |H||G:H| = 3 \cdot 4 =
+       12$. Mais $\langle (234), (123)\rangle \cong Alt(4)$ et $\alpha$ est injective, surjective et ainsi $G
+       \cong Alt(4)$.
+     \end{ex}
+
+
+     \begin{ex}
+       Soit $G = F(2,5) = \langle x, a, b, c, d | xa = b, ab = c, bc = d, cd = x, dx = a \rangle$ et soit $H =
+       \langle x \rangle$. Voir feuille pour détail. 
+     \end{ex}
+     
+
+
+
+
+     
 
 %%% Local Variables:
 %%% mode: latex
