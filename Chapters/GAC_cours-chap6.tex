@@ -508,7 +508,38 @@
 
        En fait on trouve que $G = H = \langle x \rangle$.
      \end{ex}
-     
+
+
+
+
+\section{Algorithme de Todd-Coxeter pour les graphes} \index{Algorithme!de Todd-Coxeter!Pour les graphes}
+\label{sec:algo-todd-coxeter-graphes}
+
+  On utilise des graphes au lieu de tableaux.
+  
+  \subsection{$H = \{1\}$}
+
+  \begin{exs}
+    \begin{enumerate}
+    \item Soit $G = \langle x | x^4 = 1 \rangle$.
+
+    \item Soit $G = \langle a, b | a^3 = 1, b^2 = 1, ab = ba^{-1} \iff abab^{-1} = 1 \iff abab = 1 \rangle$.
+    \end{enumerate}
+  \end{exs}
+
+  
+  Pour $|G| < \infty$, l'alogrithme de Todd-Coxeter (pour $H = \{1\}$) nous donne le \emph{graphe de Cayley}
+  \index{Graphe!de Cayley} (avec les générateurs dans la présentations).
+
+
+  \subsection{$H \neq \{1\}$ et $|G:H| < \infty$}
+
+  L'algorithme nous donne le \emph{graphe de Schreier} \index{Graphe!de Schreier} de $H$ dans $G$. Les sommets
+  sont les classes de $H$ et les arêtes correspondent à l'action de $G$ sur le quotient $G/H$.
+
+  \begin{ex}
+    Soit $G = \langle x, y | x^3 = y^3 = (xy)^2 = 1 \rangle$ et soit $H = \langle x \rangle$.
+  \end{ex}
 
 
 

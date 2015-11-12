@@ -79,9 +79,9 @@
               \draw (-4,-3) node[scale=0.8]{$\bullet$} node[below left]{$t_2$};
               \draw (-3,-2) node[scale=0.8]{$\bullet$} node[above left]{$e$};
               \draw (0,1) node[scale=0.8]{$\bullet$} node[right]{$t_1 = t_4t_2$};
-              \draw[color = ForestGreen] (0,1) -- (0,0);
-              \draw[color = ForestGreen] (4,-3) -- (3,-2);
-              \draw[color = ForestGreen] (-4,-3) -- (-3,-2);
+              \draw[color = OliveGreen] (0,1) -- (0,0);
+              \draw[color = OliveGreen] (4,-3) -- (3,-2);
+              \draw[color = OliveGreen] (-4,-3) -- (-3,-2);
               \draw[color = red] (0,0) to[bend left] (4,-3);
               \draw[color = red] (3,-2) to[bend left] (-4,-3);
               \draw[color = red] (-3,-2) to[bend left] (0,1);
@@ -94,7 +94,7 @@
             \begin{tikzpicture}
               \foreach \k in {-3,-2,...,5} { \draw (\k, 0) node[scale=0.8]{$\bullet$} node[below]{$\k$}; }
               \foreach \k in {-3, -2, ..., 3}{ \draw[color = red] (\k, 0) to[bend left] ({\k+2}, 0); }
-              \foreach \k in {-3, -2, ..., 4}{ \draw[color = ForestGreen] (\k, 0) to[bend right] ({\k+3}, 0); }
+              \foreach \k in {-3, -2, ..., 4}{ \draw[color = OliveGreen] (\k, 0) to[bend right] ({\k+3}, 0); }
             \end{tikzpicture}
 
           \end{center}
