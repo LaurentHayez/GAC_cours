@@ -153,8 +153,173 @@
           \end{center}
   \end{ex}
 
- 
+
+
+  \section{Quasi-isométries}
+  \label{sec:quasi-isometries}
+
   
+  Soient $(X, d)$, $(X', d')$ deux espaces métriques.
+
+  \begin{defi}
+    Une application $f: X \to X'$ est une \emph{quasi-isométrie} \index{Quasi-isométrie} s'il existe $g: X' \to
+    X$ et des constante $\lambda >0$, $c \geq 0$ telles que
+    \begin{enumerate}
+    \item $d'(f(x), f(y)) \leq \lambda d(x,y) + c$ pour tout $x, y \in X$;
+    \item $d(g(x'), g(y')) \leq \lambda d'(x', y') + c$ pour tout $x', y' \in X'$;
+    \item $d(g(f(x)), x) \leq c$ pour tout $x \in X$;
+    \item $d'(f'(g'(x')), x') \leq c$ pour tout $x' \in X'$.
+    \end{enumerate}
+    Les deux premières inégalités disent que $f, g$ sont Lipschitzienne à grande échelle. Les deux dernières
+    disent que $f, g$ sont \emph{quasi-inverses} \index{Quasi-inverses} l'une de l'autre.
+    On dit que $(X, d)$ et $(X', d')$ sont \emph{quasi-isométriques} \index{Espaces!quasi-isométriques} s'il
+    existe une quasi-isométrie $f: X \to X'$.
+  \end{defi}
+
+
+  \begin{exs}
+    \begin{enumerate}
+    \item Soit $X = \R$ et $X' = \Z$. Considérons $f(x) = [x]$ (partie entière de $x$). Alors $f$ une
+      quasi-isométrie (qi) avec $\lambda = c = 1$.
+
+    \item Un espace borné est qi à un point (si on regarde l'espace de très très loin, il est réduit à un
+      point).
+    \item \textbf{Exercice:} Être qi est une relation d'équivalence parmi les espaces métriques.
+    \end{enumerate}
+  \end{exs}
+
+
+  \begin{prop}
+    Soient $S, T$ deux parties génératrices finies de $G$. Les espaces $\Gamma(G, S)$ et $\Gamma(G, T)$ sont qi.
+  \end{prop}
+
+  \begin{preuve}
+    L'idée de la preuve est que chaque $s \in S$ est un mot dans $T$.
+  \end{preuve}
+
+
+  \begin{prop}
+    Soit $G$ un groupe et $H \leq G$ un sous-groupe de $G$ d'indice fini ($|G:H| < \infty$). Alors $G$ et $H$
+    sont qi.
+  \end{prop}
+
+  \begin{preuve}
+    On démontrera ce résultat comme corollaire d'autres résultats plus généraux.
+  \end{preuve}
+
+  
+  
+  \section{Actions propres}
+  \label{sec:actions-propres}
+
+  \begin{defi}
+    Soit $G$ un groupe agissant par homéomorphismes sur un espace topologique séparé $X$. L'action de $G$ sur
+    $X$ est \emph{propre} \index{Action!propre} si pour tout $K, L \subset X$ parties compactes 
+      \[\left| \{g \in G\ |\ gK \cap L \neq \varnothing \}\right| < \infty.\]
+    Intuitivement, on ne peut pas avoir une infinité d'élément des copies de $K$ par l'action de $G$ qui
+    intersecte $L$.
+  \end{defi}
+
+  \begin{prop}
+    Supposons que $K = L = \{x\}$, on voit que dans une action propre, tout stabilisateur est fini.
+      \[\mathrm{Stab}_G(x) = \{g \in G | gx = x\}.\]
+  \end{prop}
+
+  \begin{preuve}
+    En fait on a que
+    {
+      \begin{align*}
+        \{gx\} \cap \{x\} \neq \varnothing &\iff \{gx\} \cap \{x\} = \{x\}\\
+        & \iff gx = x
+      \end{align*}}
+    et donc c'est assez clair.
+  \end{preuve}
+
+
+  \begin{exs}
+    \begin{enumerate}
+    \item Toute action d'un groupe fini est propre.
+    \item Si $G$ agit sur $X$ avec $X$ compact, l'action est propre si et seulement si $G$ est fini. Il suffit
+      de prendre $K = L = X$.
+    \item L'action de $\Z^n$ sur $\R^n$ par translations est propre. 
+
+      \textbf{Preuve:} Soient $K, L \subset \R^n$ deux parties compactes. Soit $v$ tel que $(v + K) \cap L
+      \neq \varnothing$ (ici on travaille avec des vecteurs, donc la translation est représentée par le
+      "+"). si et seulement s'il existe $k \in K$ et $l\in L$ tels que $v + k = l$ ss'il existe $k \in K$ et
+      $l \in L$ tels que $v = l-k$ si et seulement si $v \in L \setminus K$ ($L \setminus K = C$ est
+      compact). Alors $v \in C \cap \Z^n$ est fini, ce qui conclut. \qed
+
+    \item Si $X$ est discret, l'action de $G$ sur $X$ est propre si et seulement si tous les stabilisateurs
+      sont finis.
+
+      \textbf{Preuve:} Montrons que si tous les stabilisateurs sont finis, alors l'action de $G$ sur $X$ est
+      propre. Si $K, L \subset X$ sont compacts, alors ils sont finis. On peut donc écrire $K = \{x_1, \ldots,
+      x_m\}$ et $L = \{y_1, \ldots, y_n\}$. On a 
+      {
+        \begin{align*}
+          gK \cap L \neq \varnothing & \iff \exists i,j \text{ tq } gx_i = y_j.
+        \end{align*}
+      }
+      $\{g \in G | gx_i = y_j\}$ est fini; c'est une classe latérale de $\mathrm{Stab}_G(x_i)$. \qed
+
+    \item \textbf{Exercice:} Soit $G$ un groupe agissant par multiplication à gauche sur $(X, d)$, on pose
+      $\delta(Gx, Gy) = \inf\{d(gx, hy)\ |\ g, h \in G\}$. Montrer que $\delta$ est une distance sur l'espace
+      des orbites $_G \diagdown ^X$ qui définit la topologie quotient.
+    \end{enumerate}
+  \end{exs}
+
+
+
+
+  \begin{defi} \index{Espace!géodésique}
+    Un espace métrique $(X, d)$ est \emph{géodésique} si pour tous $x, y \in X$ avec $\Delta = d(x,y)$, il
+    existe $\gamma:[0, \Delta] \to X$ continue avec $\gamma(0) = x$, $\gamma(\Delta) = y$, et $d(\gamma(s),
+    \gamma(t)) = |s-t|$ pour tous $s, t \in [0, \Delta]$. C'est équivalent à dire que deux points quelconques
+    peuvent être joints par un chemin géodésique, c'est-à-dire une isométrie d'un intervalle de $\R$ dans $X$.
+  \end{defi}
+
+  \begin{exs}
+    \begin{enumerate}
+    \item $\R^n$ muni de la distance euclidienne est un espace géodésique.
+    \item Tous les espaces normés sont géodésiques.
+
+      \textbf{Preuve:} Soit $X$ un espace normé et soit $\Delta = \|x - y\|$. On prend $\gamma(t) = x +
+      \frac{t}{\Delta}(y-x)$, et donc $\|\gamma(s) - \gamma(t)\| = \frac{|s-t|}{\Delta}\|y-x\| = |s-t|$. \qed
+
+    \item $\R^2$ muni de la norme $\|(x_1, x_2)\| = |x_1| + |x_2|$ n'est pas uniquement géodésique,
+      c'est-à-dire qu'il existe en général plusieurs chemins géodésiques entre deux points.
+
+    \item Soit $\R^2 \setminus \{(0,0)\}$ muni de la métrique euclidienne n'est pas géodésique.
+
+      
+    \item Un graphe étant un espace métrique discret se plonge de manière canonique dans un espace géodésique,
+      sa \emph{réalisation géométrique} \index{Réalisation géométrique} obtenue en remplaçant chaque arête par
+      une copie isométrique de l'intervalle $[0,1]$.
+
+      
+    \item[5'.] Les graphes de Cayley $\Gamma(G, S)$, $\langle S \rangle = G$ sont des espaces géodésiques.
+    \end{enumerate}
+  \end{exs}
+  
+ 
+
+  \section{Théorème fondamental de la théorie géométrique des groupes}
+  \label{sec:thm-fond-theorie-geom-groupes}
+
+
+  \begin{theo}[Efremovich (1953), \v{S}varc (1959), Milnor (1968)] \index{Théorème!de Milnor-\v{S}varc}
+    Soit $X$ un espace métrique géodésique, dont les boules fermées sont compactes. Soit $G$ un groupe
+    agissant proprement par isométries sur $X$ avec $_G\diagdown^X$ compact. Alors $G$ est finiment engendré
+    et quasi-isométrique à $X$.
+  \end{theo}
+
+
+  \begin{ex}
+    Soit $X = \R^n$ et $G = \Z^n$. On a une action propre de $\Z^n$ sur $\R^n$ par translations. En effet
+    $\R^n$ est un espace géodésique, les boules fermées sont compactes et les translations sont des
+    isométries. Le quotient est compact et donc on a que $\Z^n$ est finiment engengré et quasi-isométrique à
+    $\R^n$. 
+  \end{ex}
 
   
 
