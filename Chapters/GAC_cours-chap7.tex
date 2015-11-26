@@ -307,7 +307,7 @@
   \label{sec:thm-fond-theorie-geom-groupes}
 
 
-  \begin{theo}[Efremovich (1953), \v{S}varc (1959), Milnor (1968)] \index{Théorème!de Milnor-\v{S}varc}
+  \begin{theo}[Efremovich (1953), \v{S}varc (1959), Milnor (1968)] \label{thm:milnor-svarc} \index{Théorème!de Milnor-\v{S}varc}
     Soit $X$ un espace métrique géodésique, dont les boules fermées sont compactes. Soit $G$ un groupe
     agissant proprement par isométries sur $X$ avec $_G\diagdown^X$ compact. Alors $G$ est finiment engendré
     et quasi-isométrique à $X$.
@@ -320,6 +320,42 @@
     isométries. Le quotient est compact et donc on a que $\Z^n$ est finiment engengré et quasi-isométrique à
     $\R^n$. 
   \end{ex}
+
+  \begin{preuve}[de \ref{thm:milnor-svarc}]
+    Soit $\pi: X \to _G\diagdown^X,\ x \mapsto Gx$ (orbite de $x$) la projection canonique. On met sur
+    $_G\diagdown^X$ la métrique $\delta(Gx, Gy) = \inf\{d(gx,hy)\ |\ g,h \in G\} = \inf\{ d(kx, y)\ |\ k \in
+    G\}$. Comme $_G\diagdown^X$ est compact, le diamètre de $_G\diagdown^X$ est fini. Posons
+      \[R := \sup\{\delta(Gx, Gy)\ |\ Gx, Gy \in _G\diagdown^X \} < \infty.\]
+    Soit $x_0 \in X$ un point-base, et $B = B(x_0, R)$ la boule centrée en $x_0$ centrée en $R$. Soit $S = \{s
+    \in G\ |\ s \neq 1, sB \cap B \neq \varnothing\}$, qui est un ensemble fini à cause de l'action propre de
+    $G$, et de plus $S$ est symétrique. Intuitivement, $S$ représente les translations de $B$ qui intersectent
+    $B$. Posons encore $r := \{ \inf\{ d(B, gB)\ |\ g \notin S \cup \{1\}\}$. Ce $r$ est la plus petite
+    distance entre un $B$ est une translation de $B$  qui n'intersecte pas $B$.
+
+    \paragraph{Assertion 1:} En fait, on a $r = \min\{ d(B, gB)\ |\ g \notin S \cup \{1\}\} > 0$. En effet,
+    soit $g' \in G$, $g' \notin S \cup \{1\}$; soit $r' = d(B, g'B) > 0$. Posons alors $T = \{g \in G\ |\ g
+    \notin S \cup \{1\},\ d(B, gB) \leq r'\}$. $T' \neq \varnothing$ car $g' \in T$. On va voir que $T$ est
+    fini. $T$ est fini car $T \subset \{g \in G\ \ gB(x_0, R+r') \cap B(x_0, R+r') \neq \varnothing\}$ qui est
+    fini. En effet, il existe $x \in B$ et $g \in T$ tel que $d(x, gx) \leq r'$, donc si $x \in B$, $x \in
+    B(x_0, R+r')$ et $d(x_0, gx) \leq d(x_0, x) + d(x, gx) \leq R + r'$. Ainsi $gx \in B(x_0, R+r')$. Ceci
+    montre que $gx \in B(x_0, R+r') \cap gB(x_0, R + r')$. Comme $r$ est l'infimum des nombres $d(B, gB) > 0$,
+    pris sur $T$ qui est fini, on a $r > 0$.
+
+    \paragraph{Exercice:} $r \leq 2R$.
+
+    Soit $\lambda = \max_{s \in S}\{d(x_0, sx_0)\}$.
+
+    \paragraph{Assertion 2:} $S$ engendre $G$ et $(\ast)$ $\frac{1}{\lambda} d(x_0, gx_0) \leq |g|_S \leq
+    \frac{1}{r}d(x_0, gx_0) + 1$. Soit $g \in G$. Si $g \in S \cup \{1\}$, $(\ast)$ est clair. Si $g \notin S
+    \cup \{1\}$, soit $k$ l'unique entier $\geq 0$ tel que $R + (k-1)r \leq d(x_0, gx_0) \leq R + kr$
+    $(\ast\ast)$. Ce $k$ existe car $d(x_0, gx_0) > R$. Comme $X$ est géodésique, on peut trouver $x_1,
+    \ldots, x_k, x_{k+1} = gx_0$ dans $X$ avec $d(x_0, x_1) \leq R$ et $d(x_i, x_{i+1}) < r$ pour $i = 1,
+    \ldots k$. Ceci marche car on a $d(x_0, gx_0) \leq R + kr$, qui est ce qu'on veut. Comme $X = \bigcup_{g
+      \in G} gB$, on peut choisir $g_0 = 1, g_1, \ldots, g_k = g$ tels que $x_i \in g_{i-1}B$ pour $i = 1,
+    \ldots, k$. On pose $s_i = g_{i-1}^{-1}g_i$, ce qui veut dire que $s_ig_i^{-1} = g_{i-1}^{-1}$ et donc $g = s_1s_2\cdots s_k$. On a $d(B, s_iB) \leq
+    d(g_{i-1}^{-1}x_i, s_ig_i^{-1}x_{i+1}) = d(x_i, x_{i+1}) < r$. Par définition de $r$, $s_i \in S \cup
+    \{1\}$ et donc $S$ engendre $G$! (On a $g_{i-1}^{-1} x \in B$ car $x \in g_{i-1}B$.) 
+  \end{preuve}
 
   
 
