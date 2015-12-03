@@ -1,0 +1,157 @@
+%---------------------------------------------------------%
+%______//------             GAC             ------\\______%
+%______||------         Chapitre 8          ------||______%
+%______\\------   Propriétés géométriques   ------//______%
+%---------------------------------------------------------%
+
+\chapter{Propriétés géométriques}
+\label{cha:propr-geom}
+
+  Une propriété géométrique est une propriété invariante par quasi-isométries.
+
+
+  \begin{defi}\index{Groupes!commensurables} 
+    Deux groupes sont \emph{commensurables} s'ils possèdent des sous-groupes d'indice fini isomorphes.
+  \end{defi}
+
+  \begin{rems}
+    \begin{enumerate}
+    \item Pour les groupes finiment engendrés, deux groupes commensurables sont quasi-isométriques (à cause du
+      corollaire précédent).
+    \item En revanche, deux groupes quasi-isométriques n'implique pas qu'ils sont commensurables (en général).
+    \end{enumerate}
+  \end{rems}
+
+  \begin{exs}
+    \begin{enumerate}
+    \item Si $F$ est un groupe fini, alors $\Z \times F$ et $D_\infty$ sont commensurables, car ils possèdent
+      tous les deux le sous-groupe $\Z$ qui est d'indice fini.
+
+    \item Pour $k, l \geq 2$, $\F_k$ est commensurable à $\F_l$.
+    \end{enumerate}
+  \end{exs}
+
+  \begin{defi}
+    Soit $(P)$ une propriété des groupes finiment engendrés. On dit que $G$ est \emph{virtuellement $(P)$}
+    \index{Groupe!virtuellement $(P)$} si $G$ possède un sous-groupe $H$ d'indice fini qui a la propriété $(P)$.
+  \end{defi}
+
+  \begin{ex}[virtuellement libre]
+    Si $G$ est virtuellement libre, alors $G$ possède un sous-groupe $H$ d'indice fini qui est libre.
+  \end{ex}
+
+  \begin{exs}
+    \begin{enumerate}
+    \item \og Être fini \og est une propriété géométrique. Car $G$ est fini ss'il est qi à $\{1\}$ et par
+      transitivité, si $H$ est qi à $G$, il est aussi qi à $\{1\}$ et donc fini.
+
+    \item \og Être cyclique infini\fg{}, c'est-à-dire \og être $\Z$\fg{}, n'est pas une propriété
+      géométrique. $\Z$ et $\Z \times \Z/2\Z$ sont qi, mais le second n'est pas cyclique infini. De même pour
+      $\Z$ et $D_\infty$.
+    \end{enumerate}
+  \end{exs}
+
+
+  \begin{prop}
+    \begin{enumerate}
+    \item Être virtuellement $\Z$ est une propriété géométrique.
+    \item Être virtuellement libre est une propriété géométrique.
+    \item Être virtuellement abélien est une propriété géométrique.
+    \item Avoir une présentation finie est une propriété géométrique.
+    \item Avoir un problème des mots résolubles est une propriété géométrique.
+    \item Être virtuellement nilpotent est une propriété géométrique.
+    \end{enumerate}
+  \end{prop}
+
+  La proposition est difficile à prouver, mais pour quelques assertions, on peut le montrer en utilisant la
+  croissance des groupes.
+
+  \section{Croissance des groupes}
+  \label{sec:croiss-des-groupes}
+  
+    Soit $G$ un groupe finiment engendré et $S = S^{-1}$ une partie finie symétrique génératrice de $G$.
+
+    \begin{defi}
+      La \emph{fonction de croissance} \index{Fonction!de croissance} de $G$ par rapport à $S$ est
+        \[V_S: \N \to \R^+\ (\N^+),\ n \mapsto |B_S(n)| \]
+      où $B_S(n) = \{g \in G\ |\ |g|_S \leq n\}$.
+    \end{defi}
+
+    \begin{exs}
+      \begin{enumerate}
+      \item Si $G$ est fini, alors $V_S(n)$ est constant pour $n \gg 0$
+
+      \item Si $G = \Z$ et $S = \{\pm 1\}$,
+        \begin{center}
+          Dessin ici
+        \end{center}
+        alors $V_s(n) = 2n + 1$.
+
+      \item Si $G = \Z^2$ avec $S = \{(\pm 1, 0), (0, \pm 1)\}$,
+        \begin{center}
+          Dessin ici
+        \end{center}
+        alors $V_S(n) = 1 + 4 \sum_{j=1}^n(n+1-j) = 2n^2 + 2n + 1 \leq (2n+1)^2$ (à vérifier).
+
+      \item Si $G = \Z^d$ avec $S = \{(\pm 1, 0, \ldots, 0), \ldots, (0, 0, \ldots, \pm 1)\}$. Alors
+        \[|B_S(n)| \leq (2n+1)^d,\ |B_S(n)| \geq \text{volume de la boule euclidienne de rayon }
+        \frac{n}{\sqrt{d}} \cong C_dn^d.\]
+
+      \item Si $G = \F_k$, $S = \{a_1^{\pm 1}, \ldots, a_k^{\pm 1}\}$. Soit $S(n) = \{g \in \F_k\ |\ |g|_S =
+        n\}$. Alors $|S(n)| = 2k(2k-1)^{n-1}$ (car on a $2k$ choix pour la première lettre du mot, et ensuite
+        comme on ne considère que des mots réduits, on a $2k-1$ choix pour le reste des lettres du mot). Ainsi
+          \[V_S(n) = \sum_{i=0}^n |S(i)| = \cdots = \frac{k(2k-1)^n-1}{k-1}.\]
+       \item Le groupe de Heisenberg discret.\index{Groupe!de Heisenberg discret}
+         Si $A$ est un anneau commutatif à unité, le groupe de Heisenberg sur $A$ est 
+         \[Heis(A) = \left\{
+           \begin{pmatrix}
+             1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1
+           \end{pmatrix}\ |\ x,y,z \in A \right\} \subseteq GL_3(A).
+         \]
+         Considérons $Heis(\Z) = \langle a,b,c \rangle$.
+           \[a =
+           \begin{pmatrix}
+             1 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1
+           \end{pmatrix},\ 
+           b =
+           \begin{pmatrix}
+             1 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 0 & 1
+           \end{pmatrix},\ 
+           c =
+           \begin{pmatrix}
+             1 & 0 & 1 \\ 0 & 1 & 0 \\ 0 & 0 & 1
+           \end{pmatrix}.
+           \]
+         On a que $[a,b] = c$, $[a,c] = [b, c] = 1$ (commutateurs). Ceci nous dit que $c$ commute avec $a$ et $b$.
+         
+         \textbf{Exercice:} Pour tous $m, n \in \Z$, $a^mb^n = c^{mn}b^na^n$ $(\ast)$ . Indication: démontrer que $a^m b
+         = c^m ba^m$.
+      \end{enumerate}
+    \end{exs}
+
+    \begin{rem}
+      $(\ast)$ nous donne que tout $g \in G$ a une expression $g = a^mb^nc^p$ pour $m, n, p \in \Z$.
+    \end{rem}
+
+    \begin{prop}[Croissance du groupe de Heisenberg]
+      Pour le groupe de Heisenberg, il existe des polynômes $P_1, P_2$ de degré 4 tels que
+        \[\forall n \in \N, P_1(n) \leq V_S(n) \leq P_2(n).\]
+    \end{prop}
+
+    \begin{preuve}
+      \begin{enumerate}
+      \item Montrons que si si $g = a^m b^n c^p$, et $|g|_S \leq N$, alors $|m|, |n| \leq N$, $|p| \leq
+        N^2$. En effet on au plus $(2N+1)$ choix pour $|m|$ et $|n|$ et $2N^2 + 1$ choix pour $|p|$, donc
+          \[V_S(n) \leq (2N+1)^2(2N^2+1).\]
+      \end{enumerate}
+    \end{preuve}
+
+    
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../GAC_cours.tex" 
+%%% End:

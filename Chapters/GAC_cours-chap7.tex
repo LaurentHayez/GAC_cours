@@ -11,7 +11,7 @@
   S$.
 
   \begin{defi} \index{Graphe!de Cayley}
-    Le \emph{graphe de Cayley}, noté $\Gamma(G, S)$ est le graphe dont l'ensemble des sommets est $G$ est
+    Le \emph{graphe de Cayley}, noté $\Gamma(G, S)$ est le graphe dont l'ensemble des sommets est $G$ et
     l'ensemble des arêtes est $E = \{(x,y) | xy^{-1} \in S \iff \exists s \in S\ :\ y = xs\}$.
 
     Deux sommets sont \emph{voisins}, et on les notes $x \sim y$, si $y$ s'obtient à partir de $x$ par
@@ -48,7 +48,7 @@
   \end{defi}
 
   \begin{prop}
-    Soit $G$ un groupe et $S \subseteq G$ un ensemble. Alors $G cong \F(S)$ (le groupe libre sur $S$) si et
+    Soit $G$ un groupe et $S \subseteq G$ un ensemble. Alors $G \cong \F(S)$ (le groupe libre sur $S$) si et
     seulement si $\Gamma(G, S)$ est un arbre.
   \end{prop}
 
@@ -165,8 +165,8 @@
     Une application $f: X \to X'$ est une \emph{quasi-isométrie} \index{Quasi-isométrie} s'il existe $g: X' \to
     X$ et des constante $\lambda >0$, $c \geq 0$ telles que
     \begin{enumerate}
-    \item $d'(f(x), f(y)) \leq \lambda d(x,y) + c$ pour tout $x, y \in X$;
-    \item $d(g(x'), g(y')) \leq \lambda d'(x', y') + c$ pour tout $x', y' \in X'$;
+    \item $d'(f(x), f(y)) \leq \lambda d(x,y) + c$ pour tous $x, y \in X$;
+    \item $d(g(x'), g(y')) \leq \lambda d'(x', y') + c$ pour tous $x', y' \in X'$;
     \item $d(g(f(x)), x) \leq c$ pour tout $x \in X$;
     \item $d'(f'(g'(x')), x') \leq c$ pour tout $x' \in X'$.
     \end{enumerate}
@@ -289,7 +289,7 @@
     \item $\R^2$ muni de la norme $\|(x_1, x_2)\| = |x_1| + |x_2|$ n'est pas uniquement géodésique,
       c'est-à-dire qu'il existe en général plusieurs chemins géodésiques entre deux points.
 
-    \item Soit $\R^2 \setminus \{(0,0)\}$ muni de la métrique euclidienne n'est pas géodésique.
+    \item $\R^2 \setminus \{(0,0)\}$ muni de la métrique euclidienne n'est pas géodésique.
 
       
     \item Un graphe étant un espace métrique discret se plonge de manière canonique dans un espace géodésique,
@@ -310,7 +310,7 @@
   \begin{theo}[Efremovich (1953), \v{S}varc (1959), Milnor (1968)] \label{thm:milnor-svarc} \index{Théorème!de Milnor-\v{S}varc}
     Soit $X$ un espace métrique géodésique, dont les boules fermées sont compactes. Soit $G$ un groupe
     agissant proprement par isométries sur $X$ avec $_G\diagdown^X$ compact. Alors $G$ est finiment engendré
-    et quasi-isométrique à $X$.
+    et quasi-isométrique à $X$. \href{https://392c.wordpress.com/2009/02/09/thesvarc-milnor-lemma/}{Lemme de Milnor-\v{S}varc}
   \end{theo}
 
 
@@ -354,8 +354,39 @@
       \in G} gB$, on peut choisir $g_0 = 1, g_1, \ldots, g_k = g$ tels que $x_i \in g_{i-1}B$ pour $i = 1,
     \ldots, k$. On pose $s_i = g_{i-1}^{-1}g_i$, ce qui veut dire que $s_ig_i^{-1} = g_{i-1}^{-1}$ et donc $g = s_1s_2\cdots s_k$. On a $d(B, s_iB) \leq
     d(g_{i-1}^{-1}x_i, s_ig_i^{-1}x_{i+1}) = d(x_i, x_{i+1}) < r$. Par définition de $r$, $s_i \in S \cup
-    \{1\}$ et donc $S$ engendre $G$! (On a $g_{i-1}^{-1} x \in B$ car $x \in g_{i-1}B$.) 
+    \{1\}$ et donc $S$ engendre $G$! (On a $g_{i-1}^{-1} x \in B$ car $x \in g_{i-1}B$.) Pour la fin de la
+    preuve, voir feuille annexe.
+
+    \textbf{Observation:} $d(x_0, g^{-1}hx_0) = d(gx_0, hx_0)$ (car la distance est invariante par actions à
+    gauche). Ceci est la distance entre deux points dans l'orbite.
+
+    Ainsi $(\ast)$ nous donne que
+      \[\frac{1}{\lambda} d(gx_0, gx_0) \leq d_S(g, h) \leq \frac{1}{r} d(gx_0, hx_0) + 1,\]
+    ce qui se traduit par le fait que $G$ est qi à l'orbite $Gx_0$, avec la métrique induite par $d$.
+
+    \paragraph{Assertion 3:} L'inclusion $f: Gx_0 \hookrightarrow X$ est une quasi-isométrie. On définit $f':
+    X \to Gx_0$ en envoyant un point $x \in X$ sur un point $x'$ de $Gx_0$ à distance $\leq R$ de $x$, avec
+    $f'(x)=x$ si $x \in Gx_0$. Alors
+      \[d(x,y) - 2R \leq d(f'(x), f'(y)) \leq d(x,y) + 2R.\]
+      \begin{center}
+        Dessin distance orbite ici
+      \end{center}
+    On a que $f' \circ f = Id_{Gx_0}$, car si $x \in Gx_0$, alors $f'(f(x)) = x$. De plus $d(x, f(f'(x)) \leq
+    R$, car pour tout $x \in X$, $f'(x) = x'$, $f(f'(x)) = f(x') = x'$. Ceci termine la preuve, car ainsi $f$
+    et $f'$ sont des qi.
   \end{preuve}
+
+
+  \begin{cor}
+    Soit $G$ un groupe finiment engendré et soit $H$ un sous-groupe d'indice fini. Alors $H$ est finiment
+    engendré, et qi à $G$.
+  \end{cor}
+
+  \begin{preuve}
+    Exercice.
+  \end{preuve}
+
+  
 
   
 
