@@ -1,4 +1,4 @@
-%---------------------------------------------------------%
+cd %---------------------------------------------------------%
 %______//------             GAC             ------\\______%
 %______||------         Chapitre 8          ------||______%
 %______\\------   Propriétés géométriques   ------//______%
@@ -143,12 +143,134 @@
       \item Montrons que si si $g = a^m b^n c^p$, et $|g|_S \leq N$, alors $|m|, |n| \leq N$, $|p| \leq
         N^2$. En effet on au plus $(2N+1)$ choix pour $|m|$ et $|n|$ et $2N^2 + 1$ choix pour $|p|$, donc
           \[V_S(n) \leq (2N+1)^2(2N^2+1).\]
+        L'application $\alpha : Heis(\Z) \to \Z^2$, $a^mb^nc^p \mapsto (m,n)$ est un homomorphisme de
+        groupes. On a $a^mb^nc^pa^{m'}b^{n'}c^{p'} = a^{m+m'}b^{n+n'}c^\ast$. Ainsi $|\alpha(g)|_{\alpha(S)}
+        \leq |g|_S \leq |g|_S$, c'est-à-dire $|m|+|n| \leq N$. 
+
+        Montrons la seconde inégalité par récurrence sur $N$. Pour $N = 1$, c'est clairement bon. Soit $g' \in
+        G$ avec $|g'|_S = N-1$, $g' = a^{m'}b^{n'}c^{p'}$. Alors on a un des trois cas:
+        \begin{enumerate}
+        \item $g = g' \cdot a^{\pm 1}$;
+        \item $g = g' \cdot b^{\pm 1}$;
+        \item $g = g' \cdot c^{\pm 1}$.
+        \end{enumerate}
+        \begin{enumerate}
+        \item $g = g'a^{\pm 1} = a^{m'}b^{n'}c^{p'}a^{\pm 1} = a^{m'}b^{n'}a^{\pm 1}c^{p'} = a^{m'}c^{\pm
+            n}a^{\pm 1} b^{n'} c^{p'} = \cdots = a^{m'\pm 1} b^{n'}c^{p'\pm n'}$.
+            Comme $|p'| \leq (N-1)^2$, on a $|p'\pm n'| \leq (N-1)^2 + |n'| \leq (N-1)^2 + N \leq N^2$. 
+            La deuxième inégalité est immédiate par récurrence.
+        \item $g'b^{\pm 1} = a^{m'}b^{n' \pm 1} c^{p'}$. Comme $|p'| \leq (N-1)^2$, on a $|p'| \leq N^2$.
+        \item $g'c^{\pm 1} = a^{m'}b^{n'}c^{p' \pm 1}$ et donc $|p' \pm 1 | \leq |p'| + 1 \leq (N-1)^2 + 1
+          \leq N^2$. 
+        \end{enumerate}
+      \item Pour l'inégalité $P_1(n) \leq V_S(n)$, montrons que, si $m+n+6[\sqrt{p}] \leq N$ avec $m,n,p\geq
+        0$, alors $|a^mb^nc^p|_S \leq N$. En effet, si $k^2 \leq p \leq (k+1)^2$, on a $a^mb^nc^p =
+        a^mb^nc^{k^2}c^{p-k^2} = a^mb^n[a^k,b^k]c^{p-k^2}$, donc $|a^mb^nc^p| \leq m + n + 4k + p-k^2 < m + n
+        + 4k + 2k + 1 \leq m +  n + 6k \leq N$.
+        
+        \textbf{Exercice:} $\iiint_{x+y+6\sqrt{z} \leq N,\ x,y,z \geq 0} 1dxdydz = kN^4$ avec $k$ constante.
       \end{enumerate}
     \end{preuve}
 
+
+    \begin{defi}
+      Soient $f, g: \R^+ \to \R^+$. Alors $f \prec g$ s'il existe $a, b, c \in \R$, $c, a > 0$ avec $f(x) \leq
+      cg(ax+b)$ pour $x \gg 0$.
+      On dit que $f \approx g$ si $f \prec g$ et $g \prec f$.
+    \end{defi}
+
+    \begin{exercice}
+      Si $f, g$ sont des polynômes de même degré, alors $f \approx g$.
+    \end{exercice}
+
+    \begin{prop}[Équivalence de croissance]
+      Soient $(G_1, S)$ et $(G_2, T)$ deux groupes quasi-isométriques (par exemples $S, T$ deux parties
+      génératrices finies du même groupe $G$). Alors $V_S \approx V_T$.
+    \end{prop}
+
+    \begin{preuve}
+      Soit $f: G_1 \to G_2$ une quasi-isométrie, c'est-à-dire qu'il existe $\lambda > 0$, $c \geq 0$ telles
+      que pour tous $x, y \in G_1$
+        \[\frac{1}{\lambda} |x^{-1}y|_S - c \leq |f(x)^{-1}f(y)|_T \leq \lambda |x^{-1}y|_S + c.\]
+      On peut supposer $f(1_{G_1}) = 1_{G_2}$ (remplacer $f$ par $(f(1))^{-1}f)$. Donc $\frac{1}{\lambda}|y|_S
+      - c \leq |f(y)|_T \leq \lambda |y|_S + c$ pour tout $y \in G_1$. Soit $R \geq 0$ tel que pour tout $h \in
+      G_2$, il existe $g \in G_1$ tel que $|f(g)^{-1}h|_T \leq R$ (quasi-surjectivité).
+      
+      Pour chaque $h$ dans $G_2$, on choisit $g_h \in G_1$ tel que $f(g_h)^{-1}h|_T \leq R$. Pour $h \in
+      B_T(n)$, on a $|g_h|_S \leq \lambda (|f(g_h)|_T + c)\ ( \iff \frac{1}{\lambda}|g_h|-c \leq |f(g_h)|) \leq
+      \lambda (R+n+c)$ par l'inégalité du triangle. Pour $h$ fixé, le nombre de $h'$ avec $g_h = g_{h'}$ est
+      au plus $|B_T(h, 2R) = V_T(2R)$.
+
+      Donc $V_T(n) \leq \left| \{g_h\ |\ h \in B_T(n)\} \right| V_T(2R) \leq V_S(\lambda R + \lambda n +
+      \lambda c)V_T(2R)$, qui est exactement la définition de $V_T \prec V_S$.
+      
+      Par symétrie on a $V_S \prec V_T$, d'où $V_S \approx V_T$.
+    \end{preuve}
+
+
+    \begin{defi}
+      \begin{enumerate}
+      \item La \emph{suite dérivée} \index{Suite!dérivée} de $G$ est définie par 
+        \[G = G^{(0)} \supset G^{(1)} = [G,G] \supset \cdots \supset G^{(k)} = [G^{(k-1)}, G^{(k-1)}] \supset \cdots.\]
+      \item La \emph{suite descendante} \index{Suite!descendante} de $G$ est 
+          \[G = G_0 \supset G_1 = [G_0, G_0] \supset [G, G_1] \supset \cdots \supset G_k = [G, G_{k-1}]
+          \supset \cdots.\]
+      \end{enumerate}
+      On a donc que $G^{(k)} < G_k$.
+    \end{defi}
+
+    \begin{defi}
+      \begin{enumerate}
+      \item On dit que $G$ est \emph{résoluble} \index{Groupe!résoluble} s'il existe $k \geq 1$ tel que
+        $G^{(k)} = \{1\}$.
+
+      \item On dit que $G$ est \emph{nilpotent} \index{Groupe!nilpotent} s'il existe $k \geq 1$ tel que $G_k = \{1\}$.
+      \end{enumerate}
+    \end{defi}
+
+
+    On observe ainsi que si $G$ est nilpotent, alors $G$ est résoluble.
+
+    \begin{exs}
+      \begin{enumerate}
+      \item Tout groupe abélien est nilpotent (donc résoluble).
+
+      \item Pour tout anneau commutatif à unité $A$, le groupe de Heisenberg $Heis(A)$ est nilpotent, car 
+          \[[Heis(A), Heis(a)] \subset \left\{
+            \begin{pmatrix}
+              1 & 0 & z\\ 0 & 1 & 0\\ 0 & 0 & 1
+            \end{pmatrix}\ \big|\ z\in A \right\} = Z(Heis(A))
+          \]
+        le centre de $Heis(A)$ (pour rappel, $Z(G) = \{g \in G\ |\ [g,h] = 1\ \forall h \in G\}$. De plus
+          \[Heis(A) \supset [Heis(A), Heis(A)] \supset [Heis(A), \underbrace{[Heis(A), Heis(A)]}_{\subset
+            Z(Heis(A))}] = \{1\}\]
+        car le centre commute avec tous les éléments.
+      \end{enumerate}
+    \end{exs}
+
+    \begin{prop}
+      Soit $G$ un groupe nilpotent.
+      \begin{enumerate}
+      \item $G_{j+1} \lhd G_j$
+      \item $G_j/G_{j+1}$ est abélien.
+      \end{enumerate}
+    \end{prop}
+    
+
+    \begin{preuve}
+      Exercice.
+    \end{preuve}
+
+    
     
 
 
+
+    
+
+    
+
+    
 
 
 %%% Local Variables:
