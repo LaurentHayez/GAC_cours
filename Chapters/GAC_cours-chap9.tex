@@ -1,0 +1,131 @@
+%---------------------------------------------------------%
+%______//------             GAC             ------\\______%
+%______||------         Chapitre 9          ------||______%
+%______\\------   Croissance et langages (formels)   ------//______%
+%---------------------------------------------------------%
+
+\chapter{Croissance et langages (formels)}
+\label{cha:croiss-et-lang-form}
+
+  \begin{defi}
+    Soit $A$ un ensemble fini, et $A^\ast$ l'ensemble de tous les mots formés à partir de $A$. $A$ s'appelle
+    un \emph{alphabet}, \index{Alphabet} et $L$ est un \emph{langage} \index{Langage} sur $A$ si $L$ est un
+    sous-ensemble de $A^\ast$.
+  \end{defi}
+
+  \begin{ex}
+    Soit $A = \{0, 1\}$. Alors $L_1 = \{0, 1, 01, 11\}$ et $L_2 = \{0^n1^m\ |\ n, m \geq 1\}$ sont des
+    langages sur $A$.
+  \end{ex}
+
+
+  \begin{defi}
+    Un \emph{automate fini déterministe (AFD)} \index{Automate!fini déterministe} est un quintuple $(Q, A,
+    \delta, q_0, F)$ constitué des éléments suivants.
+    \begin{itemize}
+    \item $A$ est un alphabet fini.
+    \item Un ensemble fini d'états $Q$.
+    \item Une fonction de transition $\delta: Q \times A \to Q$.
+    \item Un état initial $q_0$.
+    \item Un ensemble d'états finaux (ou acceptants) $F \subset Q$.
+    \end{itemize}
+  \end{defi}
+
+  \begin{ex}
+    On peut représenter un AFD par un graphe fini.
+    
+    // METTRE DESSIN ICI
+
+    Par convention, une flèche de rien vers un cercle représente l'état initial, un sommet avec deux cercles,
+    un sommet avec un seul cercle représente un état,
+    représent un état final, $A = \{a, b\}$ et une flèche d'un sommet vers un autre avec une étiquette
+    représente une transition et l'ensemble est $\delta: Q \times A \to Q$.
+
+    Un mot $\omega$ est reconnu par un automate s'il existe un chemin étiqueté par $\omega$, partant de l'état
+    initial et aboutissant dans un état final.
+
+    L'automate représenté a la figure ci-dessus accepte les mots commençant par $a$, avec au moins un $b$ au
+    milieu et terminant par $a$, et le mot $a$. Le langage reconnu par l'automate est l'ensemble des mots
+    acceptés par l'automate.
+  \end{ex}
+
+
+  \begin{defi}
+    Un langage est \emph{régulier} \index{Langage!régulier} s'il est accepté par un automate.
+  \end{defi}
+
+  
+
+
+  \begin{prop}
+    La série de croissance $f_L$ d'un langage $L$ régulier est une fonction rationelle:
+      \[f_L(z) = \sum_{n \geq 0}a_nz^n\]
+    où $a_n = \left| \{ \omega \in L\ |\ |\omega| = n\} \right|$. 
+  \end{prop}
+
+  \begin{preuve}[informelle, preuve par exemple]
+    Considérons l'automate $\mathcal{A}$ sur $\{a, b\}$ suivant
+
+    // DESSIN DE L'AUTOMATE ICI
+
+    Les mots acceptés par $\mathcal{A}$ sont des mots ne contenant pas deux $a$ consécutifs. La \emph{matrice
+      de voisinage} de $\mathcal{A}$ est 
+      \[
+      M = 
+      \begin{pmatrix}
+        1 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 0 & 2
+      \end{pmatrix}
+      \]
+    (on a une transition de $1$ vers $2$, donc $a_{12} = 1$, on a deux transitions de $3$ vers $3$, donc
+    $a_{33} = 2$ etc.)
+
+    Pour tous $q, r \in \{1, 2, 3\}$ et tous $n \in \N$, $[M^n]_{q,r}$ est le nombre de chemins de longueur
+    $n$ joignant $q$ à $r$.
+
+    \[
+    M^3 = 
+    \begin{pmatrix}
+      3 & 2 & 3 \\ 2 & 1 & 5 \\ 0 & 0 & 8
+    \end{pmatrix}
+    \]
+    par exemple veut dire qu'il y a deux chemins de longueur $3$ joignant $2$ à $1$ ($bbb$ ou $bab$).
+
+    Alors $a_n = \sum_{f \in \{1, 2\}} [M^n]_{1, f}$ pour $n$ fixé. Ainsi la série est
+      \[\sum_{n \geq 0}a_nz^n = \sum_{n \geq 0} \sum_{f \in \{1, 2\}}[M^n]_{1, f}z^n = \sum_{n \geq 0}
+      [M^n]_{1,1}z^n + \sum_{n \geq 0} [M^n]_{1,2} z^n \]
+      \[ = [I + Mz + M^2z^2 + \cdots]_{1,1} + [I + Mz + M^2z^2+\cdots]_{1,2} = [(I-Mz)^{-1}]_{1,1} +
+      [(I-Mz)^{-1}]_{1,2}\]
+      \[= \frac{1}{\det(I-Mz)} \left( \left[(I-Mz)^{Adj}\right]_{1,1} +
+        \left[(I-Mz)^{Adj}\right]_{1,2}\right),\]
+    où le déterminant est un polynômes, et les coefficients sont des polynômes. Ainsi la fonction $f_L$ est rationelle.
+  \end{preuve}
+
+  
+  
+  \begin{ex}
+    L'automate pour les formes normales de $\F_2$ sur $\{a, A = a^{-1}, b, B = b^{-1}\}$ est représenté ci-dessous.
+
+    // DESSIN ICI
+    
+    Commme on représenter le langage par un automate fini déterministe, le langage est régulier. Ainsi la
+    série de croissance de $\F_2$ par rapport à $\{a, A, b, B\}$ est rationelle.
+
+    On a calculé que $a_n = 4 \cdot 3^{n-1}$, et
+      \[f_{(G, S)}(z) = 1 + \sum_{n \geq 1} 4\cdot 3^{n-1}z^n = 1 \frac{4}{3} \sum_{n \geq 1}(3z)^n = 1 +
+      \frac{4}{3} \frac{1}{1-3z}.\]
+  \end{ex}
+
+  
+
+  
+
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../GAC_cours.tex" 
+%%% End:

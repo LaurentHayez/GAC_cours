@@ -1,4 +1,4 @@
-cd %---------------------------------------------------------%
+%---------------------------------------------------------%
 %______//------             GAC             ------\\______%
 %______||------         Chapitre 8          ------||______%
 %______\\------   Propriétés géométriques   ------//______%
@@ -260,6 +260,70 @@ cd %---------------------------------------------------------%
     \begin{preuve}
       Exercice.
     \end{preuve}
+
+
+
+
+
+
+
+    // AJOUTER LA PARTIE MANQUANTE
+
+
+
+
+    
+
+    En 1983, R. \textsc{Grigorchuck} a constuit le premier exemple d'un groupe $(G, S)$ à \emph{croissance
+      intermédiaire}, et a montré que
+      \[e^{\sqrt{n}} < V_S(n) < e^{n^{0.991}}.\]
+
+    On a vu (Gromov et Bass) que la croissance polynomiale est équivalente pour un groupe à être virtuellement
+    nilpotent. La croissance polynomiale est plus petite que la croissance intermédiaire (Grigorchuck),
+    elle-même plus petite que la croissance exponentielle (presque tous les groupes ont une croissance
+    exponentielle).
+
+
+
+
+    \begin{defi} \index{Série!de croissance}
+      Soit $G$ un groupe finiment avec une partie génératrice finie $S$. La \emph{série de croissance} de $G$
+      par rapport à $S$ est
+        \[f_{(G,S)}(z) = \sum_{n \geq 0}a_nz^n\]
+      où $a_n = \left| \{g \in G\ |\ |g|_S = n\} \right|$ (mots de longueur $n$). On peut aussi parler de $b_n
+      = V_S(n) = \left| \{g \in G\ |\ |g|_S \leq n\} \right|$ à la place de $a_n$.
+    \end{defi}
+
+    
+    \textbf{Question:} existe-t-il des groupes avec une croissance rationelle, i.e. est-ce que $f(z)$ peut
+    s'exprimer comme quotient de polynômes $P(z), Q(z) \in \Z[z]$?
+
+
+    \begin{theo}
+      Soit $G$ un groupe, $G = \langle S \rangle$ avec $|S| < \infty$. Si $G$ a un language de formes normales
+      qui est régulier, alors la série $f_{(G, S)}(z)$ est rationnelle.
+    \end{theo}
+
+    \begin{defi}
+      On appelle \emph{formes normales} \index{Forme normale} le fait de prendre un mot sur $S$ pour chaque
+      élément dans $G$.
+    \end{defi}
+
+    \begin{exs}
+      \begin{enumerate}
+      \item Considérons $\Z^2$ avec le système de générateurs $\{a^{\pm 1}, b^{\pm 1}\}$. Un langage de
+        formes normales est $\{a^nb^m,\ n, m \in \Z\}$.
+
+      \item Considérons le groupe libre $(\F_2, \{a^{\pm 1}, b^{\pm 1}\})$. Un langage de formes normales est
+        donné par tous les mots réduits (c'est le langage naturel sur le groupe libre).
+      \end{enumerate}
+    \end{exs}
+
+
+    
+    
+
+    
 
     
     
