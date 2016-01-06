@@ -261,18 +261,73 @@
       Exercice.
     \end{preuve}
 
-
-
-
-
-
-
-    // AJOUTER LA PARTIE MANQUANTE
-
-
-
-
     
+    En 1972, Hyman \textsc{Bass} démontre que tout groupe virtuellement nilpotent de présentation finie est à
+    croissance polynomiale (avec un calcul explicite du degré de croissance).
+
+    \begin{defi} \index{Rang} 
+      Pour $A$ abélien et finiment engendré, $A = \Z \oplus F$ où $|F| < \infty$ (voir
+      la structure du groupe abélien), on définit le \emph{rang} comme 
+        \[\rk_{\Z} A = r.\]
+    \end{defi}
+
+
+    \begin{theo}[de \textsc{Bass}] \index{Théorème!de Bass} \index{Degré de nilpotence}
+      Soit $G$ un groupe nilpotent finiment engendré. Soit $n \in \N$ le minimum tel que $G_N = \{1\}$ (ce $n$
+      s'appelle \emph{degré de nilpotence}). La fonction de croissance de $G$ est polynomiale de degré
+        \[\sum_{j=0}^{n-1}(j+1)\rk_{\Z}\left(G_j/G_{j+1}\right).\]
+    \end{theo}
+
+    \begin{cor}
+      Soit $G$ virtuellement nilpotent. Alors $G$ a une croissance polynomiale.
+    \end{cor}
+
+    \begin{theo}[de \textsc{Gromov}] \index{Théorème!de Gromov}
+      Soit $G$ un groupe finiment engendré à croissance polynomiale. Alors $G$ est virtuellement nilpotent.
+    \end{theo}
+
+    Le preuve de ce théorème a fondé la plupart des techniques actuelles de géométrie des groupes.
+
+    \begin{cor}
+      ``Être virtuellement nilpotent'' est une propriété géométrique. {\normalfont \small[pour rappel, une propriété
+        géométrique est une propriété invariante par qi. Si $A$ qi à $B$ et si $A$ a une propriété
+        géométrique, alors $B$ l'a aussi.]}
+    \end{cor}
+
+    \begin{preuve}
+      Soit $G_1$ quasi-isométrique à $G_2$ et soit $G_1$ virtuellement nilpotent. Par le corollaire ci-dessus,
+      $G_1$ a une croissance polynomiale. Par la proposition d'équivalence des croissances, $G_2$ a une
+      croissance polynomiale aussi. Ainsi par Gromov, $G_2$ est virtuellement nilpotent.
+    \end{preuve}
+
+
+    \begin{cor}
+      ``Être virtuellement $\Z$ (cyclique)'' est une propriété géométrique.
+    \end{cor}
+
+
+    \begin{preuve}
+      Soit $G$ quasi-isométrique à $\Z$. Alors $G$ a une croissance linéaire. En effet, dans $\Z$, les boules
+      $V(n) = 2n + 1$, qui est linaire. Comme une croissance linéaire est une croissance polynomiale, $G$ est
+      virtuellement nilpotent par Gromov.
+
+      Soit alors $H \leq G$ un sous-groupe d'indice fini tel que $H$ est nilpotent. $H$ a aussi une croissance
+      linéaire car la croissance d'un sous-groupe ne peut pas être plus grande que celle du groupe. Par Bass,
+      on a
+        \[1 = \sum_{j=0}^{n-1}(j+1)\rk_{\Z}\left(H_j/H_{j+1}\right)\]
+      où $n$ est le degré de nilpotence.
+
+      Comme $j+1$ et le rang sont tous deux positifs, la seule possibilité est que $\rk_{\Z}\left(H_0/H_1\right)
+      = 1$ et $\rk_{\Z}\left(H_j/H_{j+1}\right) = 0$ pour tout $j \geq 1$, on a $H_0 = H$. Ainsi
+      \[H_0/H_1 = H/[H, H] \cong \Z \oplus F,\ |F| < \infty.\]
+      $H_1/H_2 = [H, H]/[H, [H, H]]$ est fini, on regarde tous les quotients et on arrive à un moment à
+      $H_n = \{1\}$, ainsi $H_{n-1} / H_n = H_{n-1}/\{1\}$ est fini, donc $H_{n-1}$ est fini. Ceci montre que
+      $H_i$ est fini pour chaque $i$, donc c'est vrai en particulier pour $H_1$. Donc
+      $H_0/H_1 = H/\mathrm{fini} \cong \Z \oplus F$ qui montre que $H$ est virtuellement $\Z$, et donc $G$ est
+      aussi virtuellement $\Z$ par Milnor-\v{S}varc.
+    \end{preuve}
+
+
 
     En 1983, R. \textsc{Grigorchuck} a constuit le premier exemple d'un groupe $(G, S)$ à \emph{croissance
       intermédiaire}, et a montré que

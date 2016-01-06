@@ -519,11 +519,48 @@
   
   \subsection{$H = \{1\}$}
 
+  % Exemples 6.15
   \begin{exs}
     \begin{enumerate}
     \item Soit $G = \langle x | x^4 = 1 \rangle$.
+      \begin{center}
+        \begin{tikzpicture}
+          \node[draw, circle, scale = 0.7] (1) at (0,0) {$1 = 1_G$};
+          \node[draw, circle, scale = 0.7] (2) at (3,0) {$2 = x$};
+          \node[draw, circle, scale = 0.7] (3) at (3,-3) {$3 = x^2$};
+          \node[draw, circle, scale = 0.7] (4) at (0,-3) {$4 = x^3$};
+          \draw[->, >=latex] (1) to node[midway, above]{$x$} (2);
+          \draw[->, >=latex, dashed] (2) to[bend right] node[midway, above]{$x^{-1}$} (1);
+          \draw[->, >=latex] (2) to node[midway, right]{$x$} (3);
+          \draw[->, >=latex] (3) to node[midway, below]{$x$} (4);
+          \draw[->, >=latex] (4) to node[midway, left]{$x$} (1);
+        \end{tikzpicture}
+      \end{center}
 
-    \item Soit $G = \langle a, b | a^3 = 1, b^2 = 1, ab = ba^{-1} \iff abab^{-1} = 1 \iff abab = 1 \rangle$.
+    \item Soit $G = \langle a, b | a^3 = 1, b^2 = 1, ab = ba^{-1} \iff abab^{-1} = 1 \iff abab = 1
+      \rangle$. C'est en fait $Sym(3)$.
+      \begin{center}
+        \begin{tikzpicture}
+          \node[draw, circle, scale = 0.7] (1) at (0,0) {$1 = 1_G$};
+          \node[draw, circle, scale = 0.7] (2) at (0,-3) {$2 = b$};
+          \node[draw, circle, scale = 0.7] (3) at (-4.5,-7.5) {$3 = a$};
+          \node[draw, circle, scale = 0.7] (4) at (4.5,-7.5) {$4 = a^2$};
+          \node[draw, circle, scale = 0.7] (5) at (-1.75,-5) {$5 = ab$};
+          \node[draw, circle, scale = 0.7] (6) at (1.75,-5) {$6 = a^2b$};
+          \draw[->, >=latex] (1) to[bend right] node[midway, above left]{$a$} (3);
+          \draw[->, >=latex] (3) to[bend right] node[midway, below]{$a$} (4);
+          \draw[->, >=latex] (4) to[bend right] node[midway, above right]{$a$} (1);
+          \draw[->, >=latex] (1) to[bend right] node[midway, above left]{$b$} (2);
+          \draw[->, >=latex] (2) to[bend right] node[midway, above right]{$b$} (1);
+          \draw[->, >=latex] (2) to[bend left] node[midway, above right]{$a$} (6);
+          \draw[->, >=latex] (6) to[bend left] node[midway, below]{$a$} (5);
+          \draw[->, >=latex] (5) to[bend left] node[midway, above left]{$a$} (2);
+          \draw[->, >=latex] (5) to[bend left] node[midway, below right]{$b$} (3);
+          \draw[->, >=latex] (3) to[bend left] node[midway, above left]{$b$} (5);
+          \draw[->, >=latex] (6) to[bend left] node[midway, above right]{$b$} (4);
+          \draw[->, >=latex] (4) to[bend left] node[midway, below left]{$b$} (6);
+        \end{tikzpicture}
+      \end{center}
     \end{enumerate}
   \end{exs}
 
@@ -539,6 +576,31 @@
 
   \begin{ex}
     Soit $G = \langle x, y | x^3 = y^3 = (xy)^2 = 1 \rangle$ et soit $H = \langle x \rangle$.
+      \begin{center}
+        \begin{tikzpicture}
+          \node[draw, circle, scale = 0.7, color=OliveGreen] (1) at (0,0) {$1 = H$};
+          \node[draw, circle, scale = 0.7] (2) at (-2,-3) {$2 = Hy$};
+          \node[draw, circle, scale = 0.7] (3) at (2,-3) {$3 = Hy^2$};
+          \node[draw, circle, scale = 0.7, color=OliveGreen] (4) at (0,-6) {$4 = Hy^2x$};
+          \draw[->, >=latex, color = OliveGreen] (1.135) to[out=135, in=180] (0, 1) node[above]{$x$}
+          to[out=0, in = 45] (1.45);
+          \draw[->, >=latex] (1) to node[midway, above left]{$y$} (2);
+          \draw[->, >=latex] (3) to node[midway, above right]{$y$} (1);
+          \draw[->, >=latex] (2) to[bend right] node[midway, below]{$y$} (3);
+          \draw[->, >=latex, color = OliveGreen] (2) to[bend left] node[midway, above]{$x$} (3);
+          \draw[->, >=latex, color = OliveGreen] (3) to node[midway, below right]{$x$} (4);
+          \draw[->, >=latex] (4.225) to[out=225, in=180] (0, -7) node[below]{$y$} 
+          to[out=0, in=315] (4);
+          \draw[->, >=latex, color = OliveGreen] (4) to node[midway, below left]{$x$} (2);
+        \end{tikzpicture}
+      \end{center}
+    On a quatres classes, donc l'indice est 4. $H$ n'est pas normal dans $G$, ainsi $G/H$ n'est pas
+    nécessairement un groupe, mais juste un ensembles de classes.
+
+    \textbf{Raisonnement pour le graphe:} On cherche ce que vaut $Hxyxy$. Comme $Hx = H$, on en déduit que
+    $Hyxy = H$. On doit donc définir $2x = 3$.
+
+    On cherche $Hy^2xy$. Mais $xy = y^{-1}x^{-1}$, ainsi $Hy^2xy = Hyx^2 = 4$.
   \end{ex}
 
 
