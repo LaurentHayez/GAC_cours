@@ -21,6 +21,35 @@
   \begin{exs}
     \begin{enumerate}
     \item Soit $G = \Z/6\Z$ et $S = \{x, x^{-1}\}$, pour $x = 1$ et $x^{-1} = 5$.
+      \begin{center}
+        \begin{tikzpicture}
+          % Nodes
+          \draw (0,0) node[scale=0.7]{$\bullet$} node[above left]{$1_G$};
+          \draw (2,0) node[scale=0.7]{$\bullet$} node[above right]{$x$};
+          \draw (3.5,-1.5) node[scale=0.7]{$\bullet$} node[right]{$x^2$};
+          \draw (2,-3) node[scale=0.7]{$\bullet$} node[below right]{$x^3$};
+          \draw (0,-3) node[scale=0.7]{$\bullet$} node[below left]{$x^4$};
+          \draw (-1.5,-1.5) node[scale=0.7]{$\bullet$} node[left]{$x^5$};
+          \node (a) at (1.5, -1.5){$x$} node[above left]{$y$};
+          % Edges (x)
+          \draw[->, >=latex, color=OliveGreen] (0,0) to[bend left] (2,0);
+          \draw[->, >=latex, color=OliveGreen] (2,0) to[bend left] (3.5, -1.5);
+          \draw[->, >=latex, color=OliveGreen] (3.5,-1.5) to[bend left] (2, -3);
+          \draw[->, >=latex, color=OliveGreen] (2,-3) to[bend left] (0,-3);
+          \draw[->, >=latex, color=OliveGreen] (0,-3) to[bend left] (-1.5, -1.5);
+          \draw[->, >=latex, color=OliveGreen] (-1.5,-1.5) to[bend left] (0,0);
+          % Edges (x^-1)
+          \draw[<-, >=latex, color=RoyalBlue] (0,0) to[bend right] (2,0);
+          \draw[<-, >=latex, color=RoyalBlue] (2,0) to[bend right] (3.5, -1.5);
+          \draw[<-, >=latex, color=RoyalBlue] (3.5,-1.5) to[bend right] (2, -3);
+          \draw[<-, >=latex, color=RoyalBlue] (2,-3) to[bend right] (0,-3);
+          \draw[<-, >=latex, color=RoyalBlue] (0,-3) to[bend right] (-1.5, -1.5);
+          \draw[<-, >=latex, color=RoyalBlue] (-1.5,-1.5) to[bend right] (0,0);
+          % Legend
+          \draw[->, >=latex, color=OliveGreen] (5, -1) to (6,-1) node[right]{$x$};
+          \draw[->, >=latex, color=RoyalBlue] (5,-2) to (6,-2) node[right]{$x^{-1}$};
+        \end{tikzpicture}
+      \end{center}
 
     \item Soit $G = \Z/6\Z$ et $S = \{2, -2\}$.
 
