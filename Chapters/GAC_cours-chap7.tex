@@ -30,7 +30,6 @@
           \draw (2,-3) node[scale=0.7]{$\bullet$} node[below right]{$x^3$};
           \draw (0,-3) node[scale=0.7]{$\bullet$} node[below left]{$x^4$};
           \draw (-1.5,-1.5) node[scale=0.7]{$\bullet$} node[left]{$x^5$};
-          \node (a) at (1.5, -1.5){$x$} node[above left]{$y$};
           % Edges (x)
           \draw[->, >=latex, color=OliveGreen] (0,0) to[bend left] (2,0);
           \draw[->, >=latex, color=OliveGreen] (2,0) to[bend left] (3.5, -1.5);
@@ -52,16 +51,129 @@
       \end{center}
 
     \item Soit $G = \Z/6\Z$ et $S = \{2, -2\}$.
+      \begin{center}
+        \begin{tikzpicture}
+          % Nodes
+          \node[scale=0.7] (0) at (0,0){$\bullet$};
+          \node[scale=0.7] (1) at (2,0){$\bullet$};
+          \node[scale=0.7] (2) at (3,-1.5){$\bullet$};
+          \node[scale=0.7] (3) at (2,-3){$\bullet$};
+          \node[scale=0.7] (4) at (0,-3){$\bullet$};
+          \node[scale=0.7] (5) at (-1,-1.5){$\bullet$};
+          % Nodes labels
+          \draw (0) node[above left]{$0$};
+          \draw (1) node[above right]{$1$};
+          \draw (2) node[right]{$2$};
+          \draw (3) node[below right]{$3$};
+          \draw (4) node[below left]{$4$};
+          \draw (5) node[left]{$5$};
+          % Edges (2)
+          \draw[->, >=latex, color=OliveGreen] (0.center) to[bend left] (2.center);
+          \draw[->, >=latex, color=OliveGreen] (2.center) to[bend left] (4.center);
+          \draw[->, >=latex, color=OliveGreen] (4.center) to[bend left] (0.center);
+          \draw[->, >=latex, color=OliveGreen] (1.center) to[bend left] (3.center);
+          \draw[->, >=latex, color=OliveGreen] (3.center) to[bend left] (5.center);
+          \draw[->, >=latex, color=OliveGreen] (5.center) to[bend left] (1.center);
+          % Edges (-2)
+          \draw[<-, >=latex, color=RoyalBlue] (0.center) to[bend right] (2.center);
+          \draw[<-, >=latex, color=RoyalBlue] (2.center) to[bend right] (4.center);
+          \draw[<-, >=latex, color=RoyalBlue] (4.center) to[bend right] (0.center);
+          \draw[<-, >=latex, color=RoyalBlue] (1.center) to[bend right] (3.center);
+          \draw[<-, >=latex, color=RoyalBlue] (3.center) to[bend right] (5.center);
+          \draw[<-, >=latex, color=RoyalBlue] (5.center) to[bend right] (1.center);
+          % legend
+          \draw[->, >=latex, color=OliveGreen] (5, -1) to (6,-1) node[right]{$2$};
+          \draw[->, >=latex, color=RoyalBlue] (5,-2) to (6,-2) node[right]{$-2$};
+        \end{tikzpicture}
+      \end{center}
 
     \item Soit $G = \Z/6\Z$ et $S = \{3 = -3\}$.
+      \begin{center}
+        \begin{tikzpicture}
+          % Nodes
+          \node[scale=0.7] (0) at (0,0){$\bullet$};
+          \node[scale=0.7] (1) at (2,0){$\bullet$};
+          \node[scale=0.7] (2) at (3,-1.5){$\bullet$};
+          \node[scale=0.7] (3) at (2,-3){$\bullet$};
+          \node[scale=0.7] (4) at (0,-3){$\bullet$};
+          \node[scale=0.7] (5) at (-1,-1.5){$\bullet$};
+          % Nodes labels
+          \draw (0) node[above left]{$0$};
+          \draw (1) node[above right]{$1$};
+          \draw (2) node[right]{$2$};
+          \draw (3) node[below right]{$3$};
+          \draw (4) node[below left]{$4$};
+          \draw (5) node[left]{$5$};
+          % Edges (3)
+          \draw[<->, >=latex, color=OliveGreen] (0.center) to (3.center);
+          \draw[<->, >=latex, color=OliveGreen] (1.center) to (4.center);
+          \draw[<->, >=latex, color=OliveGreen] (2.center) to (5.center);
+        \end{tikzpicture}
+      \end{center}
 
     \item Soit $G = \Z/6\Z$ et $S = \{2, -2, 3 = -3\}$.
+      \begin{center}
+        \begin{tikzpicture}
+          % Nodes
+          \node[scale=0.7] (0) at (0,0){$\bullet$};
+          \node[scale=0.7] (2) at (1,-2){$\bullet$};
+          \node[scale=0.7] (4) at (-2,-2){$\bullet$};
+          \node[scale=0.7] (3) at (6,1){$\bullet$};
+          \node[scale=0.7] (5) at (7,-1){$\bullet$};
+          \node[scale=0.7] (1) at (4,-1){$\bullet$};
+          % Nodes labels
+          \draw (0) node[above]{$0$};
+          \draw (1) node[below left]{$1$};
+          \draw (2) node[below right]{$2$};
+          \draw (3) node[above]{$3$};
+          \draw (4) node[below left]{$4$};
+          \draw (5) node[below right]{$5$};
+          % Edges
+          \draw[color=OliveGreen] (0.center) to (2.center) to (4.center) to cycle;
+          \draw[color=OliveGreen] (3.center) to (5.center) to (1.center) to cycle;
+          \draw[color=RoyalBlue] (0.center) to (3.center);
+          \draw[color=RoyalBlue] (2.center) to (5.center);
+          \draw[color=RoyalBlue] (4.center) to (1.center);
+          % Legend
+          \draw[color=OliveGreen] (8, -0.5) to (9,-0.5) node[right]{$2$};
+          \draw[color=RoyalBlue] (8,-1.5) to (9,-1.5) node[right]{$3$};
+        \end{tikzpicture}
+      \end{center}
 
     \item Soit $G = \Z$ et $S = \{1, -1\}$.
+      \begin{center}
+        \begin{tikzpicture}
+          \foreach \n in {-4, -3, ..., 4}{
+            \node[scale=0.7] (\n) at (\n, 0){$\bullet$};
+            \draw (\n) node[above]{$\n$};
+            \draw[->, >=latex, color=OliveGreen] (\n.center) to node[scale=0.7, midway, above]{$1$} ($(\n) + (1,0)$.center);
+          }
+          \draw (5, 0) node[right]{$\Z$};
+        \end{tikzpicture}
+      \end{center}
 
     \item Soit $G = \Z^2$ et $S = \{(\pm 1, 0), (0, \pm 1)\}$.
+      \begin{center}
+        \begin{tikzpicture}
+          \foreach \i in {-2, -1, ..., 2} {
+            \foreach \j in {-2, -1, ..., 2} {
+              \draw[->, >=latex, color=OliveGreen] (\i, \j) to ($(\i, \j) + (1, 0)$);
+              \draw[->, >=latex, color=RoyalBlue] (\i, \j) to ($(\i, \j) + (0, 1)$);
+            }
+          }
+          \draw (0,0) node[scale=0.7, below left]{$(0,0)$};
+        \end{tikzpicture}
+      \end{center}
 
     \item Soit $G = \F_2 = \F(a,b)$ le groupe libre avec 2 générateurs et soit $S = \{a^{\pm 1}, b^{\pm 1}\}$.
+      \begin{center}
+        \begin{tikzpicture}
+          \draw l-system [l-system={cayley, axiom=[A] [+A] [-A] [++A], step=3cm, order=4}];
+        \end{tikzpicture}
+        Source:
+        \href{http://tex.stackexchange.com/questions/222881/cayley-graph-of-free-group-in-tikz}{tex.stackexchange}
+        (ça vaut la peine de jeter un oeil aux jolis graphs :))
+      \end{center}
     \end{enumerate}
   \end{exs}
 
@@ -87,8 +199,80 @@
     \index{Morphisme!de graphe} est une application $\phi: \Gamma_1 \to \Gamma_2$, $\phi \big|_V : V_1 \to
     V_2$, $\phi \big|_E : E_1 \to E_2$ telle que $(\phi(v), \phi(v')) \in E_2 \iff (v, v') \in E_1$.
 
+    \begin{center}
+      \begin{tikzpicture}
+        % Nodes
+        \node[scale=0.7] (1) at (0,0){$\bullet$};
+        \node[scale=0.7] (2) at (-1,-1){$\bullet$};
+        \node[scale=0.7] (3) at (-2,-2){$\bullet$};
+        \node[scale=0.7] (4) at (1,-1){$\bullet$};
+        \node[scale=0.7] (5) at (2,-2){$\bullet$};
+        \node[scale=0.7] (a) at (5,0){$\bullet$};
+        \node[scale=0.7] (b) at (5,-1){$\bullet$};
+        \node[scale=0.7] (c) at (5,-2){$\bullet$};
+        % Nodes labels
+        \draw (1) node[above]{$1$};
+        \draw (2) node[left]{$2$};
+        \draw (3) node[left]{$3$};
+        \draw (4) node[right]{$4$};
+        \draw (5) node[right]{$5$};
+        \draw (a) node[right]{$a$};
+        \draw (b) node[right]{$b$};
+        \draw (c) node[right]{$c$};
+        % name of graphs
+        \draw (0,  1) node{$\Gamma_1$};
+        \draw (5, 1) node{$\Gamma_2$};
+        % Edges
+        \draw[color=OliveGreen] (1.center) to (2.center) to (3.center);
+        \draw[color=OliveGreen] (1.center) to (4.center) to (5.center);
+        \draw[color=OliveGreen] (a.center) to (b.center) to (c.center);
+        % morphism:
+        \draw (8, 0) node{$\phi: 1 \mapsto a$};
+        \draw (8, -1) node{$2 \mapsto b,\ 4 \mapsto b$};
+        \draw (8, -2) node{$3 \mapsto c,\ 5 \mapsto c$};
+        % note
+        \draw (0, -3) node{Respecte le voisinage car $\phi((1,2)) = (\phi(1), \phi(2)) = (a,b)$};
+      \end{tikzpicture}
+    \end{center}
+
     Si $\phi$ est bijective et $\Gamma_1 = \Gamma_2$, $\phi$ s'appelle un \emph{automorphisme de graphe}.
     \index{Automorphisme!de graphe}
+    \begin{center}
+      \begin{tikzpicture}
+        % Nodes
+        \node[scale=0.7] (1) at (0,0){$\bullet$};
+        \node[scale=0.7] (2) at (-1,-1){$\bullet$};
+        \node[scale=0.7] (3) at (-2,-2){$\bullet$};
+        \node[scale=0.7] (4) at (1,-1){$\bullet$};
+        \node[scale=0.7] (5) at (2,-2){$\bullet$};
+        \node[scale=0.7] (a) at (6,0){$\bullet$};
+        \node[scale=0.7] (b) at (5,-1){$\bullet$};
+        \node[scale=0.7] (c) at (4,-2){$\bullet$};
+        \node[scale=0.7] (d) at (7,-1){$\bullet$};
+        \node[scale=0.7] (e) at (8,-2){$\bullet$};
+        % Nodes labels
+        \draw (1) node[above]{$1$};
+        \draw (2) node[left]{$2$};
+        \draw (3) node[left]{$3$};
+        \draw (4) node[right]{$4$};
+        \draw (5) node[right]{$5$};
+        \draw (a) node[above]{$1$};
+        \draw (b) node[left]{$4$};
+        \draw (c) node[left]{$5$};
+        \draw (d) node[right]{$2$};
+        \draw (e) node[right]{$3$};
+        % name of graphs
+        \draw (0,  1) node{$\Gamma_1$};
+        \draw (6, 1) node{$\Gamma_2$};
+        % Edges
+        \draw[color=OliveGreen] (1.center) to (2.center) to (3.center);
+        \draw[color=OliveGreen] (1.center) to (4.center) to (5.center);
+        \draw[color=OliveGreen] (a.center) to (b.center) to (c.center);
+        \draw[color=OliveGreen] (a.center) to (d.center) to (e.center);
+        % morphism:
+        \draw[->, >=latex] (2, -1) to[bend left] node[midway, above]{$\phi$ aut} (4, -1);
+      \end{tikzpicture}
+    \end{center}
 
     L'ensemble de tous les automorphisme de $\Gamma$, noté $Aut(\Gamma)$ forme un groupe.
   \end{defi}
@@ -103,16 +287,71 @@
     \rangle$. Soit $X_0 = \Gamma(G,S)$ le graphe de Cayley de $G$ par rapport à $S$. Il faut se convaincre que
     $G \not\cong Aut(X_0)$.
 
-    Pour chaque $i \geq 1$, soit $T_i$ un arbre fini (qui correspond à $s_i$)
+    Pour chaque $i \geq 1$, soit $T_i$ un arbre fini (qui correspond à $s_i$) de la forme suivante
     \begin{center}
-      Figure de $T_i$ ici.
+      \begin{tikzpicture}
+        % nodes
+        \node[scale=0.7] (ai) at (0,0) {$\bullet$};
+        \node[scale=0.7] (p1) at (1,0) {$\bullet$};
+        \node[scale=0.7] (q1) at (2,0) {$\bullet$};
+        \node[scale=0.7] (bi) at (3,0) {$\bullet$};
+        \node[scale=0.7] (p2) at (1,-1) {$\bullet$};
+        \node[scale=0.7] (q2) at (2,-1) {$\bullet$};
+        \node[scale=0.7] (p3) at (1,-3) {$\bullet$};
+        \node[scale=0.7] (q3) at (2,-3) {$\bullet$};
+        \node[scale=0.7] (p4) at (1,-4) {$\bullet$};
+        \node[scale=0.7] (q4) at (2,-4) {$\bullet$};
+        \node[scale=0.7] (q5) at (2,-5) {$\bullet$};
+        % labels
+        \draw (ai) node[above]{$a_i$};
+        \draw (p1) node[above]{$p_i$};
+        \draw (q1) node[above]{$q_i$};
+        \draw (bi) node[above]{$b_i$};
+        \draw (p4) node[below]{$p_i'$};
+        \draw (q5) node[below]{$q_i'$};
+        \draw[decorate,decoration={brace,amplitude=10pt, mirror}, xshift = -0.3cm] (p1.center) -- (p4.center)
+        node[midway, xshift = -0.6cm]{$2i$};
+        \draw[decorate,decoration={brace,amplitude=10pt}, xshift = 0.3cm] (q1.center) -- (q5.center) node[midway,
+        xshift=1cm]{$2i+1$};
+        % edges
+        \draw (ai.center) -- (p1.center) -- (q1.center) -- (bi.center);
+        \draw (p1.center) -- (p2.center) (q1.center) -- (q2.center);
+        \draw[dotted] (p2.center) -- (p3.center) (q2.center) -- (q3.center);
+        \draw (p3.center) -- (p4.center) (q3.center) -- (q4.center) -- (q5.center);
+      \end{tikzpicture}
     \end{center}
     Si $i \neq j$, on a que $T_i \not\cong T_j$, car on n'a pas le même nombre de sommets dans $T_i$ et
     $T_j$. On doit montrer que $Aut(T_i) = \{id\}$ (exercice). 
 
     Dans le graphe de Cayley $X_0$, on remplace chaque arête $s_i$ par $T_i$, par exemple
     \begin{center}
-      Dessiner exemple ici
+      \begin{tikzpicture}
+        % nodes
+        \node[scale=0.7] (ai) at (0,0) {$\bullet$};
+        \node[scale=0.7] (p1) at (1,0) {$\bullet$};
+        \node[scale=0.7] (q1) at (2,0) {$\bullet$};
+        \node[scale=0.7] (bi) at (3,0) {$\bullet$};
+        \node[scale=0.7] (p2) at (1,-1) {$\bullet$};
+        \node[scale=0.7] (q2) at (2,-1) {$\bullet$};
+        \node[scale=0.7] (p3) at (1,-3) {$\bullet$};
+        \node[scale=0.7] (q3) at (2,-3) {$\bullet$};
+        \node[scale=0.7] (p4) at (1,-4) {$\bullet$};
+        \node[scale=0.7] (q4) at (2,-4) {$\bullet$};
+        \node[scale=0.7] (q5) at (2,-5) {$\bullet$};
+        % labels
+        \draw (ai) node[above]{$g$};
+        \draw (bi) node[above]{$gs_i$};
+        % edges
+        \draw[->, >=latex] (ai.center) --  (bi.center);
+        \draw (p1.center) -- (p2.center) (q1.center) -- (q2.center);
+        \draw[dotted] (p2.center) -- (p3.center) (q2.center) -- (q3.center);
+        \draw (p3.center) -- (p4.center) (q3.center) -- (q4.center) -- (q5.center);
+        % other
+        \draw (-6, -2.5) node[scale=0.7]{$\bullet$} node[above]{$g$};
+        \draw (-3, -2.5) node[scale=0.7]{$\bullet$} node[above]{$gs_i$};
+        \draw[->, >=latex] (-6, -2.5) to node[midway, above]{$s_i$} (-3, -2.5);
+        \draw[->, >=latex] (-2, -2.5) to[bend left] (0, -2.5);
+      \end{tikzpicture}
     \end{center}
     et on obtient un graphe $X$. On a ainsi une expansion de $X_0$ vers $X$ ainsi qu'une contraction de $X$
     vers $X_0$ (en remplaçant $T_i$ par $s_i$). On observe que chaque automorphisme $\phi: X \to X$ induit un
@@ -370,6 +609,26 @@
     montre que $gx \in B(x_0, R+r') \cap gB(x_0, R + r')$. Comme $r$ est l'infimum des nombres $d(B, gB) > 0$,
     pris sur $T$ qui est fini, on a $r > 0$.
 
+    \begin{center}
+      \begin{tikzpicture}
+        \draw (0,0) node[scale=0.7]{$\bullet$} node[below]{$x_0$};
+        \draw (1, 0.5) node[scale=0.7]{$\bullet$} node[below]{$x_1$};
+        \draw (2, 0.75) node[scale=0.7]{$\bullet$} node[below]{$x_2$};
+        \draw (5, 1) node[scale=0.7]{$\bullet$} node[below]{$x_k$};
+        \draw (6, 1) node[scale=0.7]{$\bullet$} node[below]{$x_{k+1} = gx_0$};
+        \draw (0,0) to node[midway, above]{$\leq R$} (1, 0.5) to node[midway, above]{$\leq r$} (2, 0.75);
+        \draw (5,1) to node[midway, above]{$\leq r$} (6, 1);
+        \draw[rotate=30] (0,0) ellipse (1.5cm and 0.8cm);
+        \draw (1, 0.5) ellipse (0.5cm and 1cm);
+        \draw (2, 0.75) ellipse (1.2cm and 1cm);
+        \draw (5, 1) ellipse (2cm and 1cm);
+        \draw (6, 1) ellipse (0.5cm and 0.8cm);
+        \draw (0, -0.8) node[below]{$B$};
+        \draw (1, -0.5) node[below]{$g_1B$};
+        \draw (2, 0) node[below]{$g_2B$};
+      \end{tikzpicture}
+    \end{center}
+
     \paragraph{Exercice:} $r \leq 2R$.
 
     Soit $\lambda = \max_{s \in S}\{d(x_0, sx_0)\}$.
@@ -398,8 +657,19 @@
     $f'(x)=x$ si $x \in Gx_0$. Alors
       \[d(x,y) - 2R \leq d(f'(x), f'(y)) \leq d(x,y) + 2R.\]
       \begin{center}
-        Dessin distance orbite ici
-      \end{center}
+      \begin{tikzpicture}
+        \draw (0,0) node[scale=0.7]{$\bullet$} node[above]{$x$};
+        \draw (3,0) node[scale=0.7]{$\bullet$} node[right]{$x' = f'(x)$};
+        \draw (0,-3) node[scale=0.7]{$\bullet$} node[below]{$y$};
+        \draw (3,-3) node[scale=0.7]{$\bullet$} node[right]{$y' = f'(y)$};
+        \draw (0,0) to node[midway, above]{$\leq R$} (3, 0);
+        \draw (0,-3) to node[midway, above]{$\leq R$} (3, -3);
+        \draw[color=OliveGreen] (3, 0) -- (3, -3);
+        \draw[dotted] (3,1) -- (3,0) (3, -3) -- (3, -4);
+        \draw (3, -1.5) ellipse (0.5cm and 2.5cm);
+        \draw (3.5, 1) node {$Gx_0$};
+      \end{tikzpicture}
+    \end{center}
     On a que $f' \circ f = Id_{Gx_0}$, car si $x \in Gx_0$, alors $f'(f(x)) = x$. De plus $d(x, f(f'(x)) \leq
     R$, car pour tout $x \in X$, $f'(x) = x'$, $f(f'(x)) = f(x') = x'$. Ceci termine la preuve, car ainsi $f$
     et $f'$ sont des qi.

@@ -11,8 +11,12 @@
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{pgf, pgfplots, tikz, pst-solides3d}
 \usetikzlibrary{cd} %To draw commutative diagrams
+\usetikzlibrary{calc}
 \usetikzlibrary{arrows}
 \usetikzlibrary{shapes}
+\usetikzlibrary{lindenmayersystems, arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{automata}
 \usepackage[chapter]{algorithm}
 \usepackage{algorithmicx, algpseudocode}
 \usepackage{listings}
@@ -48,6 +52,32 @@
 \DeclareMathOperator{\rk}{rk}
 
 \synctex=1
+
+% ---------------- For Cayley graph of free group ----------------- %
+\newcount\quadrant
+\pgfdeclarelindenmayersystem{cayley}{
+  \rule{A -> B [ R [A] [+A] [-A] ]}
+  \symbol{R}{ \pgflsystemstep=0.5\pgflsystemstep } 
+  \symbol{-}{
+    \pgfmathsetcount\quadrant{Mod(\quadrant+1,4)}
+    \tikzset{rotate=90}
+  }
+  \symbol{+}{
+    \pgfmathsetcount\quadrant{Mod(\quadrant-1,4)}
+    \tikzset{rotate=-90}
+  }
+  \symbol{B}{
+    \draw [dot-cayley] (0,0) -- (\pgflsystemstep,0) 
+       node [font=\scriptsize, midway, 
+         anchor={270-mod(\the\quadrant,2)*90}, inner sep=.5ex] 
+           {\ifcase\quadrant$a$\or$b$\or$a^{-1}$\or$b^{-1}$\fi};
+    \tikzset{xshift=\pgflsystemstep}
+  }
+}
+\tikzset{
+  dot/.tip={Circle[sep=-1.5pt,length=3pt]}, cayley/.tip={Stealth[]dot[]}
+}
+% ------ taken from http://tex.stackexchange.com/questions/222881/cayley-graph-of-free-group-in-tikz ----- %
 
 
 
